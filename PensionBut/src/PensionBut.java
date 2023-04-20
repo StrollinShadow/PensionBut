@@ -20,11 +20,15 @@ public class PensionBut extends javax.swing.JFrame {
     @SuppressWarnings("empty-statement")
     public PensionBut() {
         initComponents();
+        EinzahltagSpinner.setEnabled(false);
+        SpeichernButton3.setEnabled(false);
+        SparbetragMonatTextField.setEnabled(false);
         DauerSpinner.setEnabled(false);
         SparbetragTextField.setEnabled(false);
         SpeichernButton2.setEnabled(false);
         keineBuchstabenImStartkapitalTextField(10);
         keineBuchstabenImSparbetragTextField(10);
+        keineBuchstabenImSparbetragMonatTextField(10);
     }
 
     /**
@@ -52,6 +56,12 @@ public class PensionBut extends javax.swing.JFrame {
         DauerLabel = new javax.swing.JLabel();
         SpeichernButton2 = new javax.swing.JButton();
         DauerSpinner = new javax.swing.JSpinner();
+        SparbetragMonatTextField = new javax.swing.JTextField();
+        SparbetragMonatLabel = new javax.swing.JLabel();
+        DauerLabel1 = new javax.swing.JLabel();
+        EinzahltagSpinner = new javax.swing.JSpinner();
+        SpeichernButton3 = new javax.swing.JButton();
+        DauerLabel2 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -94,6 +104,11 @@ public class PensionBut extends javax.swing.JFrame {
 
         yearMonthGroup.add(monthlyRB);
         monthlyRB.setText("Monatlich");
+        monthlyRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                monthlyRBActionPerformed(evt);
+            }
+        });
 
         yearMonthGroup.add(yearlyRB);
         yearlyRB.setText("Jährlich");
@@ -127,7 +142,7 @@ public class PensionBut extends javax.swing.JFrame {
             }
         });
 
-        DauerLabel.setText("Dauer:");
+        DauerLabel.setText("Dauer (Jahre):");
 
         SpeichernButton2.setText("Speichern");
         SpeichernButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -143,6 +158,21 @@ public class PensionBut extends javax.swing.JFrame {
         DauerSpinner.setRequestFocusEnabled(false);
         DauerSpinner.setValue(1);
 
+        SparbetragMonatLabel.setText("Geben Sie den monatlichen Sparbetrag ein:");
+
+        DauerLabel1.setText("Einzahltag:");
+
+        EinzahltagSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
+
+        SpeichernButton3.setText("Speichern");
+        SpeichernButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SpeichernButton3ActionPerformed(evt);
+            }
+        });
+
+        DauerLabel2.setText("Tag im Monat");
+
         javax.swing.GroupLayout bodyLayout = new javax.swing.GroupLayout(body);
         body.setLayout(bodyLayout);
         bodyLayout.setHorizontalGroup(
@@ -151,11 +181,25 @@ public class PensionBut extends javax.swing.JFrame {
                 .addGap(121, 121, 121)
                 .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(monthlyRB, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(SpeichernButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(StartkapitalTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(StartkapitalLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 373, Short.MAX_VALUE)
+                    .addGroup(bodyLayout.createSequentialGroup()
+                        .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(SpeichernButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(StartkapitalTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(StartkapitalLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(63, 63, 63)
+                        .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(SparbetragMonatLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(SparbetragMonatTextField)
+                            .addComponent(SpeichernButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(bodyLayout.createSequentialGroup()
+                                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(DauerLabel1)
+                                    .addGroup(bodyLayout.createSequentialGroup()
+                                        .addComponent(EinzahltagSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(DauerLabel2)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(98, 98, 98)
                 .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(yearlyRB, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,24 +216,28 @@ public class PensionBut extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(StartkapitalLabel)
-                    .addComponent(SparbetragLabel))
+                    .addComponent(SparbetragLabel)
+                    .addComponent(SparbetragMonatLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(StartkapitalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SparbetragTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(bodyLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(SpeichernButton)
-                        .addGap(32, 32, 32))
-                    .addGroup(bodyLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DauerLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(DauerSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(SpeichernButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                    .addComponent(SparbetragTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SparbetragMonatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DauerLabel)
+                    .addComponent(DauerLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DauerSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EinzahltagSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DauerLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SpeichernButton2)
+                    .addComponent(SpeichernButton)
+                    .addComponent(SpeichernButton3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(monthlyRB, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(yearlyRB, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -245,10 +293,10 @@ public class PensionBut extends javax.swing.JFrame {
             DauerSpinner.setEnabled(true);
             SparbetragTextField.setEnabled(true);
             SpeichernButton2.setEnabled(true);
-        } else {
-            DauerSpinner.setEnabled(false);
-            SparbetragTextField.setEnabled(false);
-            SpeichernButton2.setEnabled(false);
+            EinzahltagSpinner.setEnabled(false);
+            SpeichernButton3.setEnabled(false);
+            SparbetragMonatTextField.setEnabled(false);
+
         }
     }//GEN-LAST:event_yearlyRBActionPerformed
 
@@ -259,6 +307,43 @@ public class PensionBut extends javax.swing.JFrame {
     private void StartkapitalTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartkapitalTextFieldActionPerformed
 
     }//GEN-LAST:event_StartkapitalTextFieldActionPerformed
+
+    private void SpeichernButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SpeichernButton3ActionPerformed
+        String sparbetragMonat = SparbetragMonatTextField.getText();
+        Integer.parseInt(sparbetragMonat);
+
+        int einzahltag = (int) EinzahltagSpinner.getValue();
+    }//GEN-LAST:event_SpeichernButton3ActionPerformed
+
+    private void monthlyRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monthlyRBActionPerformed
+        if (monthlyRB.isSelected()) {
+            EinzahltagSpinner.setEnabled(true);
+            SpeichernButton3.setEnabled(true);
+            SparbetragMonatTextField.setEnabled(true);
+            DauerSpinner.setEnabled(false);
+            SparbetragTextField.setEnabled(false);
+            SpeichernButton2.setEnabled(false);
+
+        }
+    }//GEN-LAST:event_monthlyRBActionPerformed
+
+    private void keineBuchstabenImSparbetragMonatTextField(int maxLength) {
+        ((AbstractDocument) SparbetragMonatTextField.getDocument()).setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void insertString(DocumentFilter.FilterBypass fb, int offset, String text, AttributeSet attrs) throws BadLocationException {
+                if (text.matches("[0-9]+") && (fb.getDocument().getLength() + text.length()) <= maxLength) {
+                    super.insertString(fb, offset, text, attrs);
+                }
+            }
+
+            @Override
+            public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                if (text.matches("[0-9]+") && (fb.getDocument().getLength() + text.length() - length) <= maxLength) {
+                    super.replace(fb, offset, length, text, attrs);
+                }
+            }
+        });
+    }
 
     private void keineBuchstabenImSparbetragTextField(int maxLength) {
         ((AbstractDocument) SparbetragTextField.getDocument()).setDocumentFilter(new DocumentFilter() {
@@ -312,11 +397,17 @@ public class PensionBut extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DauerLabel;
+    private javax.swing.JLabel DauerLabel1;
+    private javax.swing.JLabel DauerLabel2;
     private javax.swing.JSpinner DauerSpinner;
+    private javax.swing.JSpinner EinzahltagSpinner;
     private javax.swing.JLabel SparbetragLabel;
+    private javax.swing.JLabel SparbetragMonatLabel;
+    private javax.swing.JTextField SparbetragMonatTextField;
     private javax.swing.JTextField SparbetragTextField;
     private javax.swing.JButton SpeichernButton;
     private javax.swing.JButton SpeichernButton2;
+    private javax.swing.JButton SpeichernButton3;
     private javax.swing.JLabel StartkapitalLabel;
     private javax.swing.JTextField StartkapitalTextField;
     private javax.swing.JPanel body;
