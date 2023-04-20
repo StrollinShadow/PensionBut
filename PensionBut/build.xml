@@ -10,6 +10,34 @@
 <project name="PensionBut" default="default" basedir=".">
     <description>Builds, tests, and runs the project PensionBut.</description>
     <import file="nbproject/build-impl.xml"/>
+
+      <!-- Define project properties -->
+  <property name="src.dir" value="src"/>
+  <property name="build.dir" value="build"/>
+  <property name="dist.dir" value="dist"/>
+  
+  <!-- Define build targets -->
+  <target name="compile">
+    <mkdir dir="${build.dir}"/>
+    <javac srcdir="${src.dir}" destdir="${build.dir}"/>
+  </target>
+  
+  <target name="package" depends="compile">
+    <mkdir dir="${dist.dir}"/>
+    <jar destfile="${dist.dir}/PensionBut.jar" basedir="${build.dir}"/>
+  </target>
+  
+  <target name="test" depends="compile">
+    <junit printsummary="yes">
+      <classpath>
+        <pathelement location="${build.dir}"/>
+        <pathelement location="lib/junit.jar"/>
+      </classpath>
+      <test name="com.pensionbut.TestClass"/>
+    </junit>
+  </target>
+  
+  <target name="build" depends="package,test"/>
     <!--
 
     There exist several targets which are by default empty and which can be 
@@ -70,4 +98,10 @@
     nbproject/build-impl.xml file. 
 
     -->
+    <target name="run" depends="PensionBut-impl.jar">
+            <exec dir="bin" executable="launcher.exe">
+                <arg file="${dist.jar}"/>
+            </exec>
+        </target>
+
 </project>
