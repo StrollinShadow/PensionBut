@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Component class="javax.swing.ButtonGroup" name="yearMonthGroup">
     </Component>
@@ -129,21 +129,25 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="SpeichernButton" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="StartkapitalTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="StartkapitalLabel" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="monthlyRB" min="-2" pref="93" max="-2" attributes="0"/>
-                              <EmptySpace pref="564" max="32767" attributes="0"/>
-                              <Component id="yearlyRB" min="-2" pref="87" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
+                          <Component id="monthlyRB" alignment="0" min="-2" pref="93" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="SpeichernButton" alignment="0" max="32767" attributes="0"/>
+                              <Component id="StartkapitalTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="StartkapitalLabel" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace pref="373" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="yearlyRB" min="-2" pref="87" max="-2" attributes="0"/>
+                              <Component id="SparbetragLabel" max="32767" attributes="0"/>
+                              <Component id="SparbetragTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="SpeichernButton2" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="DauerLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="DauerSpinner" alignment="0" min="-2" pref="76" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -151,17 +155,36 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="StartkapitalLabel" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="StartkapitalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="SparbetragLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="StartkapitalTextField" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="SpeichernButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="StartkapitalTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="SparbetragTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              <Component id="SpeichernButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="DauerLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="DauerSpinner" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="SpeichernButton2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="monthlyRB" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                           <Component id="yearlyRB" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="636" max="32767" attributes="0"/>
+                      <EmptySpace pref="639" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -182,6 +205,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="J&#xe4;hrlich"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="yearlyRBActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="StartkapitalLabel">
               <Properties>
@@ -189,6 +215,12 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="StartkapitalTextField">
+              <Properties>
+                <Property name="actionCommand" type="java.lang.String" value="&lt;Not Set&gt;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StartkapitalTextFieldActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="SpeichernButton">
               <Properties>
@@ -197,6 +229,47 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SpeichernButtonActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="SparbetragLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Geben Sie den j&#xe4;hrlichen Sparbetrag ein:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="SparbetragTextField">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SparbetragTextFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="DauerLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Dauer:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="SpeichernButton2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Speichern"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SpeichernButton2ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JSpinner" name="DauerSpinner">
+              <Properties>
+                <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                  <SpinnerModel initial="1" maximum="99" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                </Property>
+                <Property name="focusable" type="boolean" value="false"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[12, 12]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[0, 0]"/>
+                </Property>
+                <Property name="requestFocusEnabled" type="boolean" value="false"/>
+                <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="1" type="code"/>
+                </Property>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>

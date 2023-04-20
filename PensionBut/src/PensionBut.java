@@ -1,19 +1,30 @@
+
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
- * @author ni_ha
+ * @author KASC05
  */
 public class PensionBut extends javax.swing.JFrame {
 
     /**
      * Creates new form PensionBut
      */
+    @SuppressWarnings("empty-statement")
     public PensionBut() {
         initComponents();
+        DauerSpinner.setEnabled(false);
+        SparbetragTextField.setEnabled(false);
+        SpeichernButton2.setEnabled(false);
+        keineBuchstabenImStartkapitalTextField(10);
+        keineBuchstabenImSparbetragTextField(10);
     }
 
     /**
@@ -36,6 +47,11 @@ public class PensionBut extends javax.swing.JFrame {
         StartkapitalLabel = new javax.swing.JLabel();
         StartkapitalTextField = new javax.swing.JTextField();
         SpeichernButton = new javax.swing.JButton();
+        SparbetragLabel = new javax.swing.JLabel();
+        SparbetragTextField = new javax.swing.JTextField();
+        DauerLabel = new javax.swing.JLabel();
+        SpeichernButton2 = new javax.swing.JButton();
+        DauerSpinner = new javax.swing.JSpinner();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -81,8 +97,20 @@ public class PensionBut extends javax.swing.JFrame {
 
         yearMonthGroup.add(yearlyRB);
         yearlyRB.setText("Jährlich");
+        yearlyRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yearlyRBActionPerformed(evt);
+            }
+        });
 
         StartkapitalLabel.setText("Geben Sie das Startkapital ein:");
+
+        StartkapitalTextField.setActionCommand("<Not Set>");
+        StartkapitalTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StartkapitalTextFieldActionPerformed(evt);
+            }
+        });
 
         SpeichernButton.setText("Speichern");
         SpeichernButton.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +119,30 @@ public class PensionBut extends javax.swing.JFrame {
             }
         });
 
+        SparbetragLabel.setText("Geben Sie den jährlichen Sparbetrag ein:");
+
+        SparbetragTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SparbetragTextFieldActionPerformed(evt);
+            }
+        });
+
+        DauerLabel.setText("Dauer:");
+
+        SpeichernButton2.setText("Speichern");
+        SpeichernButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SpeichernButton2ActionPerformed(evt);
+            }
+        });
+
+        DauerSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 99, 1));
+        DauerSpinner.setFocusable(false);
+        DauerSpinner.setMaximumSize(new java.awt.Dimension(12, 12));
+        DauerSpinner.setMinimumSize(new java.awt.Dimension(0, 0));
+        DauerSpinner.setRequestFocusEnabled(false);
+        DauerSpinner.setValue(1);
+
         javax.swing.GroupLayout bodyLayout = new javax.swing.GroupLayout(body);
         body.setLayout(bodyLayout);
         bodyLayout.setHorizontalGroup(
@@ -98,32 +150,50 @@ public class PensionBut extends javax.swing.JFrame {
             .addGroup(bodyLayout.createSequentialGroup()
                 .addGap(121, 121, 121)
                 .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bodyLayout.createSequentialGroup()
-                        .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(SpeichernButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(StartkapitalTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(StartkapitalLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(bodyLayout.createSequentialGroup()
-                        .addComponent(monthlyRB, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 564, Short.MAX_VALUE)
+                    .addComponent(monthlyRB, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(SpeichernButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(StartkapitalTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(StartkapitalLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 373, Short.MAX_VALUE)
+                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(yearlyRB, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(147, 147, 147))))
+                        .addComponent(SparbetragLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(SparbetragTextField)
+                        .addComponent(SpeichernButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(DauerLabel)
+                    .addComponent(DauerSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(147, 147, 147))
         );
         bodyLayout.setVerticalGroup(
             bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bodyLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(StartkapitalLabel)
+                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(StartkapitalLabel)
+                    .addComponent(SparbetragLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(StartkapitalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(SpeichernButton)
-                .addGap(21, 21, 21)
+                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(StartkapitalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SparbetragTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(bodyLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(SpeichernButton)
+                        .addGap(32, 32, 32))
+                    .addGroup(bodyLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(DauerLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(DauerSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(SpeichernButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(monthlyRB, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(yearlyRB, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(636, Short.MAX_VALUE))
+                .addContainerGap(639, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -155,41 +225,85 @@ public class PensionBut extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void SpeichernButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SpeichernButtonActionPerformed
-        String Startkapital = StartkapitalTextField.getText();
-        Integer.parseInt(Startkapital);
-        System.out.println(Startkapital);
+        String startkapital = StartkapitalTextField.getText();
+        Integer.parseInt(startkapital);
+
     }//GEN-LAST:event_SpeichernButtonActionPerformed
+
+    private void SpeichernButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SpeichernButton2ActionPerformed
+
+        String sparbetrag = SparbetragTextField.getText();
+        Integer.parseInt(sparbetrag);
+
+        int dauer = (int) DauerSpinner.getValue();
+    }//GEN-LAST:event_SpeichernButton2ActionPerformed
+
+    private void yearlyRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearlyRBActionPerformed
+        if (yearlyRB.isSelected()) {
+            DauerSpinner.setEnabled(true);
+            SparbetragTextField.setEnabled(true);
+            SpeichernButton2.setEnabled(true);
+        } else {
+            DauerSpinner.setEnabled(false);
+            SparbetragTextField.setEnabled(false);
+            SpeichernButton2.setEnabled(false);
+        }
+    }//GEN-LAST:event_yearlyRBActionPerformed
+
+    private void SparbetragTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SparbetragTextFieldActionPerformed
+
+    }//GEN-LAST:event_SparbetragTextFieldActionPerformed
+
+    private void StartkapitalTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartkapitalTextFieldActionPerformed
+
+    }//GEN-LAST:event_StartkapitalTextFieldActionPerformed
+
+    private void keineBuchstabenImSparbetragTextField(int maxLength) {
+        ((AbstractDocument) SparbetragTextField.getDocument()).setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void insertString(DocumentFilter.FilterBypass fb, int offset, String text, AttributeSet attrs) throws BadLocationException {
+                if (text.matches("[0-9]+") && (fb.getDocument().getLength() + text.length()) <= maxLength) {
+                    super.insertString(fb, offset, text, attrs);
+                }
+            }
+
+            @Override
+            public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                if (text.matches("[0-9]+") && (fb.getDocument().getLength() + text.length() - length) <= maxLength) {
+                    super.replace(fb, offset, length, text, attrs);
+                }
+            }
+        });
+    }
+
+    private void keineBuchstabenImStartkapitalTextField(int maxLength) {
+        ((AbstractDocument) StartkapitalTextField.getDocument()).setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void insertString(DocumentFilter.FilterBypass fb, int offset, String text, AttributeSet attrs) throws BadLocationException {
+                if (text.matches("[0-9]+") && (fb.getDocument().getLength() + text.length()) <= maxLength) {
+                    super.insertString(fb, offset, text, attrs);
+                }
+            }
+
+            @Override
+            public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                if (text.matches("[0-9]+") && (fb.getDocument().getLength() + text.length() - length) <= maxLength) {
+                    super.replace(fb, offset, length, text, attrs);
+                }
+            }
+        });
+    }
 
     /**
      * @param args the command line arguments
      */
+    @SuppressWarnings("Convert2Lambda")
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PensionBut.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PensionBut.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PensionBut.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PensionBut.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @SuppressWarnings("override")
             public void run() {
                 new PensionBut().setVisible(true);
             }
@@ -197,7 +311,12 @@ public class PensionBut extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel DauerLabel;
+    private javax.swing.JSpinner DauerSpinner;
+    private javax.swing.JLabel SparbetragLabel;
+    private javax.swing.JTextField SparbetragTextField;
     private javax.swing.JButton SpeichernButton;
+    private javax.swing.JButton SpeichernButton2;
     private javax.swing.JLabel StartkapitalLabel;
     private javax.swing.JTextField StartkapitalTextField;
     private javax.swing.JPanel body;
