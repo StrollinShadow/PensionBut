@@ -4,6 +4,10 @@
   <NonVisualComponents>
     <Component class="javax.swing.ButtonGroup" name="yearMonthGroup">
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="AnfangEndeEinzJahr">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="AnfangEndeEinzMonat">
+    </Component>
     <Container class="javax.swing.JPanel" name="jPanel4">
 
       <Layout>
@@ -133,6 +137,17 @@
                       <Component id="yearlyRB" min="-2" pref="87" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="354" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="AnfangMonatRB" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="EndeMonatRB" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="AnfangJahrRB" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <Component id="EndeJahrRB" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="237" max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -143,7 +158,14 @@
                           <Component id="monthlyRB" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                           <Component id="yearlyRB" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="636" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="EndeJahrRB" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="AnfangJahrRB" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="EndeMonatRB" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="AnfangMonatRB" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="574" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -156,6 +178,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Monatlich"/>
               </Properties>
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="monthlyRBStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JRadioButton" name="yearlyRB">
               <Properties>
@@ -164,6 +189,54 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="J&#xe4;hrlich"/>
               </Properties>
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="yearlyRBStateChanged"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="AnfangJahrRB">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="AnfangEndeEinzJahr"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Einzahlung am 1.1."/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AnfangJahrRBActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="EndeJahrRB">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="AnfangEndeEinzJahr"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Einzahlung am 31.12"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="AnfangMonatRB">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="AnfangEndeEinzMonat"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Einzahlung Anfang des Monats"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AnfangMonatRBActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="EndeMonatRB">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="AnfangEndeEinzMonat"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Einzahlung Ende des Monats"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EndeMonatRBActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

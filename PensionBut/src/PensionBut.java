@@ -26,6 +26,8 @@ public class PensionBut extends javax.swing.JFrame {
     private void initComponents() {
 
         yearMonthGroup = new javax.swing.ButtonGroup();
+        AnfangEndeEinzJahr = new javax.swing.ButtonGroup();
+        AnfangEndeEinzMonat = new javax.swing.ButtonGroup();
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         head = new javax.swing.JPanel();
@@ -33,6 +35,10 @@ public class PensionBut extends javax.swing.JFrame {
         body = new javax.swing.JPanel();
         monthlyRB = new javax.swing.JRadioButton();
         yearlyRB = new javax.swing.JRadioButton();
+        AnfangJahrRB = new javax.swing.JRadioButton();
+        EndeJahrRB = new javax.swing.JRadioButton();
+        AnfangMonatRB = new javax.swing.JRadioButton();
+        EndeMonatRB = new javax.swing.JRadioButton();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -75,9 +81,50 @@ public class PensionBut extends javax.swing.JFrame {
 
         yearMonthGroup.add(monthlyRB);
         monthlyRB.setText("Monatlich");
+        monthlyRB.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                monthlyRBStateChanged(evt);
+            }
+        });
 
         yearMonthGroup.add(yearlyRB);
         yearlyRB.setText("Jährlich");
+        yearlyRB.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                yearlyRBStateChanged(evt);
+            }
+        });
+
+        AnfangEndeEinzJahr.add(AnfangJahrRB);
+        AnfangJahrRB.setText("Einzahlung am 1.1.");
+        AnfangJahrRB.setEnabled(false);
+        AnfangJahrRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnfangJahrRBActionPerformed(evt);
+            }
+        });
+
+        AnfangEndeEinzJahr.add(EndeJahrRB);
+        EndeJahrRB.setText("Einzahlung am 31.12");
+        EndeJahrRB.setEnabled(false);
+
+        AnfangEndeEinzMonat.add(AnfangMonatRB);
+        AnfangMonatRB.setText("Einzahlung Anfang des Monats");
+        AnfangMonatRB.setEnabled(false);
+        AnfangMonatRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnfangMonatRBActionPerformed(evt);
+            }
+        });
+
+        AnfangEndeEinzMonat.add(EndeMonatRB);
+        EndeMonatRB.setText("Einzahlung Ende des Monats");
+        EndeMonatRB.setEnabled(false);
+        EndeMonatRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EndeMonatRBActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout bodyLayout = new javax.swing.GroupLayout(body);
         body.setLayout(bodyLayout);
@@ -89,6 +136,16 @@ public class PensionBut extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 357, Short.MAX_VALUE)
                 .addComponent(yearlyRB, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(354, 354, 354))
+            .addGroup(bodyLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(AnfangMonatRB)
+                .addGap(18, 18, 18)
+                .addComponent(EndeMonatRB)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(AnfangJahrRB)
+                .addGap(41, 41, 41)
+                .addComponent(EndeJahrRB)
+                .addGap(237, 237, 237))
         );
         bodyLayout.setVerticalGroup(
             bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,7 +154,13 @@ public class PensionBut extends javax.swing.JFrame {
                 .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(monthlyRB, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(yearlyRB, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(636, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EndeJahrRB)
+                    .addComponent(AnfangJahrRB)
+                    .addComponent(EndeMonatRB)
+                    .addComponent(AnfangMonatRB))
+                .addContainerGap(574, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -128,6 +191,37 @@ public class PensionBut extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    
+    private void AnfangJahrRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnfangJahrRBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AnfangJahrRBActionPerformed
+
+    private void yearlyRBStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_yearlyRBStateChanged
+        if (yearlyRB.isSelected()){
+            AnfangJahrRB.setEnabled(true);
+            EndeJahrRB.setEnabled(true);
+            AnfangMonatRB.setEnabled(false);
+            EndeMonatRB.setEnabled(false);
+        }
+    }//GEN-LAST:event_yearlyRBStateChanged
+
+    private void AnfangMonatRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnfangMonatRBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AnfangMonatRBActionPerformed
+
+    private void EndeMonatRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EndeMonatRBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EndeMonatRBActionPerformed
+
+    private void monthlyRBStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_monthlyRBStateChanged
+        if (monthlyRB.isSelected()){
+            AnfangMonatRB.setEnabled(true);
+            EndeMonatRB.setEnabled(true);
+            AnfangJahrRB.setEnabled(false);
+            EndeJahrRB.setEnabled(false);
+        }
+    }//GEN-LAST:event_monthlyRBStateChanged
 
     /**
      * @param args the command line arguments
@@ -165,6 +259,12 @@ public class PensionBut extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup AnfangEndeEinzJahr;
+    private javax.swing.ButtonGroup AnfangEndeEinzMonat;
+    private javax.swing.JRadioButton AnfangJahrRB;
+    private javax.swing.JRadioButton AnfangMonatRB;
+    private javax.swing.JRadioButton EndeJahrRB;
+    private javax.swing.JRadioButton EndeMonatRB;
     private javax.swing.JPanel body;
     private javax.swing.JPanel head;
     private javax.swing.JPanel jPanel1;
