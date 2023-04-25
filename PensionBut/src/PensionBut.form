@@ -67,6 +67,7 @@
                   <Component id="head" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="body" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -128,43 +129,37 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="SpeichernButton" alignment="0" max="32767" attributes="0"/>
+                          <Component id="StartkapitalLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="StartkapitalTextField" max="32767" attributes="0"/>
+                          <Component id="ZinsbetragTextField" max="32767" attributes="0"/>
+                          <Component id="jLabel1" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="monthlyRB" alignment="0" min="-2" pref="93" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="SpeichernButton" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="StartkapitalTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="StartkapitalLabel" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                          <Component id="SparbetragMonatLabel" max="32767" attributes="0"/>
+                          <Component id="SparbetragMonatTextField" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="SparbetragMonatLabel" max="32767" attributes="0"/>
-                                  <Component id="SparbetragMonatTextField" max="32767" attributes="0"/>
-                                  <Component id="SpeichernButton3" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="DauerLabel1" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="EinzahltagSpinner" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="DauerLabel2" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="monthlyRB" min="-2" pref="93" max="-2" attributes="0"/>
+                                  <Component id="DauerLabel1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="EinzahltagSpinner" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="DauerLabel2" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="yearlyRB" min="-2" pref="87" max="-2" attributes="0"/>
-                              <Component id="SparbetragLabel" max="32767" attributes="0"/>
-                              <Component id="SparbetragTextField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="SpeichernButton2" alignment="0" max="32767" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="yearlyRB" min="-2" pref="87" max="-2" attributes="0"/>
+                          <Component id="SparbetragLabel" max="32767" attributes="0"/>
                           <Component id="DauerLabel" min="-2" max="-2" attributes="0"/>
                           <Component id="DauerSpinner" alignment="0" min="-2" pref="76" max="-2" attributes="0"/>
+                          <Component id="SparbetragTextField" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
                   </Group>
@@ -181,33 +176,30 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="SparbetragMonatTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="StartkapitalTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="SparbetragTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="SparbetragMonatTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="DauerLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="DauerLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="DauerSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="EinzahltagSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="DauerLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ZinsbetragTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="SpeichernButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="SpeichernButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="SpeichernButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="monthlyRB" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                           <Component id="yearlyRB" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="639" max="32767" attributes="0"/>
+                      <EmptySpace pref="659" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -240,17 +232,9 @@
                 <Property name="text" type="java.lang.String" value="Geben Sie das Startkapital ein:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="StartkapitalTextField">
-              <Properties>
-                <Property name="actionCommand" type="java.lang.String" value="&lt;Not Set&gt;"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StartkapitalTextFieldActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JButton" name="SpeichernButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Speichern"/>
+                <Property name="text" type="java.lang.String" value="Zins berechnen"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SpeichernButtonActionPerformed"/>
@@ -261,23 +245,10 @@
                 <Property name="text" type="java.lang.String" value="Geben Sie den j&#xe4;hrlichen Sparbetrag ein:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="SparbetragTextField">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SparbetragTextFieldActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JLabel" name="DauerLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Dauer (Jahre):"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="SpeichernButton2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Speichern"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SpeichernButton2ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JSpinner" name="DauerSpinner">
               <Properties>
@@ -316,17 +287,20 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="SpeichernButton3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Speichern"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SpeichernButton3ActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JLabel" name="DauerLabel2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tag im Monat"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="StartkapitalTextField">
+            </Component>
+            <Component class="javax.swing.JTextField" name="SparbetragTextField">
+            </Component>
+            <Component class="javax.swing.JTextField" name="ZinsbetragTextField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Geben Sie den Zinsbetrag ein:"/>
               </Properties>
             </Component>
           </SubComponents>
