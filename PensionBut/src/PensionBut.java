@@ -45,6 +45,8 @@ public class PensionBut extends javax.swing.JFrame {
     private void initComponents() {
 
         yearMonthGroup = new javax.swing.ButtonGroup();
+        AnfangEndeEinzJahr = new javax.swing.ButtonGroup();
+        AnfangEndeEinzMonat = new javax.swing.ButtonGroup();
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         head = new javax.swing.JPanel();
@@ -52,6 +54,7 @@ public class PensionBut extends javax.swing.JFrame {
         body = new javax.swing.JPanel();
         monthlyRB = new javax.swing.JRadioButton();
         yearlyRB = new javax.swing.JRadioButton();
+
         StartkapitalLabel = new javax.swing.JLabel();
         SpeichernButton = new javax.swing.JButton();
         SparbetragLabel = new javax.swing.JLabel();
@@ -66,6 +69,7 @@ public class PensionBut extends javax.swing.JFrame {
         SparbetragTextField = new javax.swing.JTextField();
         ZinsbetragTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -108,14 +112,17 @@ public class PensionBut extends javax.swing.JFrame {
 
         yearMonthGroup.add(monthlyRB);
         monthlyRB.setText("Monatlich");
-        monthlyRB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                monthlyRBActionPerformed(evt);
+
+        monthlyRB.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                monthlyRBStateChanged(evt);
+
             }
         });
 
         yearMonthGroup.add(yearlyRB);
         yearlyRB.setText("Jährlich");
+
         yearlyRB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 yearlyRBActionPerformed(evt);
@@ -152,12 +159,14 @@ public class PensionBut extends javax.swing.JFrame {
 
         jLabel1.setText("Geben Sie den Zinsbetrag ein:");
 
+
         javax.swing.GroupLayout bodyLayout = new javax.swing.GroupLayout(body);
         body.setLayout(bodyLayout);
         bodyLayout.setHorizontalGroup(
             bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bodyLayout.createSequentialGroup()
                 .addGap(121, 121, 121)
+
                 .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(SpeichernButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(StartkapitalLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -185,6 +194,7 @@ public class PensionBut extends javax.swing.JFrame {
                     .addComponent(DauerSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SparbetragTextField))
                 .addGap(147, 147, 147))
+
         );
         bodyLayout.setVerticalGroup(
             bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,7 +225,15 @@ public class PensionBut extends javax.swing.JFrame {
                     .addComponent(SpeichernButton)
                     .addComponent(monthlyRB, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(yearlyRB, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(659, Short.MAX_VALUE))
+
+                .addGap(39, 39, 39)
+                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EndeJahrRB)
+                    .addComponent(AnfangJahrRB)
+                    .addComponent(EndeMonatRB)
+                    .addComponent(AnfangMonatRB))
+                .addContainerGap(574, Short.MAX_VALUE))
+
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -247,6 +265,8 @@ public class PensionBut extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+
 
 
     private void SpeichernButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SpeichernButtonActionPerformed
@@ -392,6 +412,7 @@ public class PensionBut extends javax.swing.JFrame {
         });
     }
 
+
     /**
      * @param args the command line arguments
      */
@@ -407,6 +428,7 @@ public class PensionBut extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+
     private javax.swing.JLabel DauerLabel;
     private javax.swing.JLabel DauerLabel1;
     private javax.swing.JLabel DauerLabel2;
@@ -420,6 +442,7 @@ public class PensionBut extends javax.swing.JFrame {
     private javax.swing.JLabel StartkapitalLabel;
     private javax.swing.JTextField StartkapitalTextField;
     private javax.swing.JTextField ZinsbetragTextField;
+
     private javax.swing.JPanel body;
     private javax.swing.JPanel head;
     private javax.swing.JLabel jLabel1;
