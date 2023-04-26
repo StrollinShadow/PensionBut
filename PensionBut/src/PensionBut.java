@@ -1,19 +1,38 @@
+
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
- * @author ni_ha
+ * @author KASC05
  */
 public class PensionBut extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PensionBut
-     */
+    int Startkapital;
+    int SparbetragJahr;
+    int SparbetragJahrDauer;
+    int SparbetragMonat;
+    int EinzahltagSparbetragMonat;
+    int Zinsbetrag;
+
+    @SuppressWarnings("empty-statement")
     public PensionBut() {
         initComponents();
+        EinzahltagSpinner.setEnabled(false);
+        SparbetragMonatTextField.setEnabled(false);
+        DauerSpinner.setEnabled(false);
+        SparbetragTextField.setEnabled(false);
+        ZinsbetragTextField.setEnabled(false);
+        keineBuchstabenImStartkapitalTextField(10);
+        keineBuchstabenImSparbetragTextField(10);
+        keineBuchstabenImSparbetragMonatTextField(10);
+        keineBuchstabenImZinsbetrag(10);
     }
 
     /**
@@ -33,6 +52,20 @@ public class PensionBut extends javax.swing.JFrame {
         body = new javax.swing.JPanel();
         monthlyRB = new javax.swing.JRadioButton();
         yearlyRB = new javax.swing.JRadioButton();
+        StartkapitalLabel = new javax.swing.JLabel();
+        SpeichernButton = new javax.swing.JButton();
+        SparbetragLabel = new javax.swing.JLabel();
+        DauerLabel = new javax.swing.JLabel();
+        DauerSpinner = new javax.swing.JSpinner();
+        SparbetragMonatTextField = new javax.swing.JTextField();
+        SparbetragMonatLabel = new javax.swing.JLabel();
+        DauerLabel1 = new javax.swing.JLabel();
+        EinzahltagSpinner = new javax.swing.JSpinner();
+        DauerLabel2 = new javax.swing.JLabel();
+        StartkapitalTextField = new javax.swing.JTextField();
+        SparbetragTextField = new javax.swing.JTextField();
+        ZinsbetragTextField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -75,9 +108,49 @@ public class PensionBut extends javax.swing.JFrame {
 
         yearMonthGroup.add(monthlyRB);
         monthlyRB.setText("Monatlich");
+        monthlyRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                monthlyRBActionPerformed(evt);
+            }
+        });
 
         yearMonthGroup.add(yearlyRB);
         yearlyRB.setText("Jährlich");
+        yearlyRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yearlyRBActionPerformed(evt);
+            }
+        });
+
+        StartkapitalLabel.setText("Geben Sie das Startkapital ein:");
+
+        SpeichernButton.setText("Zins berechnen");
+        SpeichernButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SpeichernButtonActionPerformed(evt);
+            }
+        });
+
+        SparbetragLabel.setText("Geben Sie den jährlichen Sparbetrag ein:");
+
+        DauerLabel.setText("Dauer (Jahre):");
+
+        DauerSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 99, 1));
+        DauerSpinner.setFocusable(false);
+        DauerSpinner.setMaximumSize(new java.awt.Dimension(12, 12));
+        DauerSpinner.setMinimumSize(new java.awt.Dimension(0, 0));
+        DauerSpinner.setRequestFocusEnabled(false);
+        DauerSpinner.setValue(1);
+
+        SparbetragMonatLabel.setText("Geben Sie den monatlichen Sparbetrag ein:");
+
+        DauerLabel1.setText("Einzahltag:");
+
+        EinzahltagSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
+
+        DauerLabel2.setText("Tag im Monat");
+
+        jLabel1.setText("Geben Sie den Zinsbetrag ein:");
 
         javax.swing.GroupLayout bodyLayout = new javax.swing.GroupLayout(body);
         body.setLayout(bodyLayout);
@@ -85,19 +158,64 @@ public class PensionBut extends javax.swing.JFrame {
             bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bodyLayout.createSequentialGroup()
                 .addGap(121, 121, 121)
-                .addComponent(monthlyRB, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 357, Short.MAX_VALUE)
-                .addComponent(yearlyRB, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(354, 354, 354))
+                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(SpeichernButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(StartkapitalLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(StartkapitalTextField)
+                    .addComponent(ZinsbetragTextField)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(63, 63, 63)
+                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(SparbetragMonatLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(SparbetragMonatTextField)
+                    .addGroup(bodyLayout.createSequentialGroup()
+                        .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(monthlyRB, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DauerLabel1)
+                            .addGroup(bodyLayout.createSequentialGroup()
+                                .addComponent(EinzahltagSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(DauerLabel2)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(98, 98, 98)
+                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(yearlyRB, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SparbetragLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DauerLabel)
+                    .addComponent(DauerSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SparbetragTextField))
+                .addGap(147, 147, 147))
         );
         bodyLayout.setVerticalGroup(
             bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bodyLayout.createSequentialGroup()
-                .addGap(111, 111, 111)
+                .addContainerGap()
                 .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(StartkapitalLabel)
+                    .addComponent(SparbetragLabel)
+                    .addComponent(SparbetragMonatLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SparbetragMonatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(StartkapitalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SparbetragTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DauerLabel)
+                    .addComponent(DauerLabel1)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DauerSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EinzahltagSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DauerLabel2)
+                    .addComponent(ZinsbetragTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SpeichernButton)
                     .addComponent(monthlyRB, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(yearlyRB, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(636, Short.MAX_VALUE))
+                .addContainerGap(659, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -112,7 +230,8 @@ public class PensionBut extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(head, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(body, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(body, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -129,35 +248,158 @@ public class PensionBut extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
+    private void SpeichernButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SpeichernButtonActionPerformed
+
+        String startkapital = StartkapitalTextField.getText();
+
+        if ("".equals(startkapital)) {
+            System.out.println("Kein Wert");
+        } else {
+            Startkapital = Integer.parseInt(startkapital);
+            System.out.println(Startkapital);
+        }
+
+        String sparbetragMonat = SparbetragMonatTextField.getText();
+
+        if ("".equals(sparbetragMonat)) {
+            System.out.println("Kein Wert");
+        } else {
+            SparbetragMonat = Integer.parseInt(sparbetragMonat);
+            System.out.println(SparbetragMonat);
+        }
+
+        int einzahltag = (int) EinzahltagSpinner.getValue();
+        EinzahltagSparbetragMonat = einzahltag;
+        System.out.println(EinzahltagSparbetragMonat);
+
+        String sparbetrag = SparbetragTextField.getText();
+
+        if ("".equals(sparbetrag)) {
+            System.out.println("Kein Wert");
+        } else {
+            SparbetragJahr = Integer.parseInt(sparbetrag);
+            System.out.println(SparbetragJahr);
+        }
+
+        int dauer = (int) DauerSpinner.getValue();
+        SparbetragJahrDauer = dauer;
+        System.out.println(SparbetragJahrDauer);
+
+        String zinsbetrag = ZinsbetragTextField.getText();
+
+        if ("".equals(zinsbetrag)) {
+            System.out.println("Kein Wert");
+        } else {
+            Zinsbetrag = Integer.parseInt(zinsbetrag);
+            System.out.println(Zinsbetrag);
+        }
+
+
+    }//GEN-LAST:event_SpeichernButtonActionPerformed
+
+    private void yearlyRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearlyRBActionPerformed
+        if (yearlyRB.isSelected()) {
+            DauerSpinner.setEnabled(true);
+            SparbetragTextField.setEnabled(true);
+            EinzahltagSpinner.setEnabled(false);
+            SparbetragMonatTextField.setEnabled(false);
+            ZinsbetragTextField.setEnabled(true);
+
+        }
+    }//GEN-LAST:event_yearlyRBActionPerformed
+
+    private void monthlyRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monthlyRBActionPerformed
+        if (monthlyRB.isSelected()) {
+            EinzahltagSpinner.setEnabled(true);
+            SparbetragMonatTextField.setEnabled(true);
+            DauerSpinner.setEnabled(false);
+            SparbetragTextField.setEnabled(false);
+            ZinsbetragTextField.setEnabled(true);
+
+        }
+    }//GEN-LAST:event_monthlyRBActionPerformed
+
+    private void keineBuchstabenImZinsbetrag(int maxLength) {
+        ((AbstractDocument) ZinsbetragTextField.getDocument()).setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void insertString(DocumentFilter.FilterBypass fb, int offset, String text, AttributeSet attrs) throws BadLocationException {
+                if (text.matches("[0-9]+") && (fb.getDocument().getLength() + text.length()) <= maxLength) {
+                    super.insertString(fb, offset, text, attrs);
+                }
+            }
+
+            @Override
+            public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                if (text.matches("[0-9]+") && (fb.getDocument().getLength() + text.length() - length) <= maxLength) {
+                    super.replace(fb, offset, length, text, attrs);
+                }
+            }
+        });
+    }
+    
+    private void keineBuchstabenImSparbetragMonatTextField(int maxLength) {
+        ((AbstractDocument) SparbetragMonatTextField.getDocument()).setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void insertString(DocumentFilter.FilterBypass fb, int offset, String text, AttributeSet attrs) throws BadLocationException {
+                if (text.matches("[0-9]+") && (fb.getDocument().getLength() + text.length()) <= maxLength) {
+                    super.insertString(fb, offset, text, attrs);
+                }
+            }
+
+            @Override
+            public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                if (text.matches("[0-9]+") && (fb.getDocument().getLength() + text.length() - length) <= maxLength) {
+                    super.replace(fb, offset, length, text, attrs);
+                }
+            }
+        });
+    }
+
+    private void keineBuchstabenImSparbetragTextField(int maxLength) {
+        ((AbstractDocument) SparbetragTextField.getDocument()).setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void insertString(DocumentFilter.FilterBypass fb, int offset, String text, AttributeSet attrs) throws BadLocationException {
+                if (text.matches("[0-9]+") && (fb.getDocument().getLength() + text.length()) <= maxLength) {
+                    super.insertString(fb, offset, text, attrs);
+                }
+            }
+
+            @Override
+            public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                if (text.matches("[0-9]+") && (fb.getDocument().getLength() + text.length() - length) <= maxLength) {
+                    super.replace(fb, offset, length, text, attrs);
+                }
+            }
+        });
+    }
+
+    private void keineBuchstabenImStartkapitalTextField(int maxLength) {
+        ((AbstractDocument) StartkapitalTextField.getDocument()).setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void insertString(DocumentFilter.FilterBypass fb, int offset, String text, AttributeSet attrs) throws BadLocationException {
+                if (text.matches("[0-9]+") && (fb.getDocument().getLength() + text.length()) <= maxLength) {
+                    super.insertString(fb, offset, text, attrs);
+                }
+            }
+
+            @Override
+            public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                if (text.matches("[0-9]+") && (fb.getDocument().getLength() + text.length() - length) <= maxLength) {
+                    super.replace(fb, offset, length, text, attrs);
+                }
+            }
+        });
+    }
+
     /**
      * @param args the command line arguments
      */
+    @SuppressWarnings("Convert2Lambda")
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PensionBut.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PensionBut.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PensionBut.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PensionBut.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @SuppressWarnings("override")
             public void run() {
                 new PensionBut().setVisible(true);
             }
@@ -165,8 +407,22 @@ public class PensionBut extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel DauerLabel;
+    private javax.swing.JLabel DauerLabel1;
+    private javax.swing.JLabel DauerLabel2;
+    private javax.swing.JSpinner DauerSpinner;
+    private javax.swing.JSpinner EinzahltagSpinner;
+    private javax.swing.JLabel SparbetragLabel;
+    private javax.swing.JLabel SparbetragMonatLabel;
+    private javax.swing.JTextField SparbetragMonatTextField;
+    private javax.swing.JTextField SparbetragTextField;
+    private javax.swing.JButton SpeichernButton;
+    private javax.swing.JLabel StartkapitalLabel;
+    private javax.swing.JTextField StartkapitalTextField;
+    private javax.swing.JTextField ZinsbetragTextField;
     private javax.swing.JPanel body;
     private javax.swing.JPanel head;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JRadioButton monthlyRB;
