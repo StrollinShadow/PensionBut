@@ -14,12 +14,12 @@ import javax.swing.text.DocumentFilter;
  */
 public class PensionBut extends javax.swing.JFrame {
 
-    int Startkapital;
-    int SparbetragJahr;
+    double Startkapital;
+    double SparbetragJahr;
     int SparbetragJahrDauer;
-    int SparbetragMonat;
+    double SparbetragMonat;
     int EinzahltagSparbetragMonat;
-    int Zinsbetrag;
+    double Zinsbetrag;
 
     @SuppressWarnings("empty-statement")
     public PensionBut() {
@@ -293,7 +293,7 @@ public class PensionBut extends javax.swing.JFrame {
         if ("".equals(startkapital)) {
             System.out.println("Kein Wert");
         } else {
-            Startkapital = Integer.parseInt(startkapital);
+            Startkapital = Double.parseDouble(startkapital);
             System.out.println(Startkapital);
         }
 
@@ -302,7 +302,7 @@ public class PensionBut extends javax.swing.JFrame {
         if ("".equals(sparbetragMonat)) {
             System.out.println("Kein Wert");
         } else {
-            SparbetragMonat = Integer.parseInt(sparbetragMonat);
+            SparbetragMonat = Double.parseDouble(sparbetragMonat);
             System.out.println(SparbetragMonat);
         }
 
@@ -315,7 +315,7 @@ public class PensionBut extends javax.swing.JFrame {
         if ("".equals(sparbetrag)) {
             System.out.println("Kein Wert");
         } else {
-            SparbetragJahr = Integer.parseInt(sparbetrag);
+            SparbetragJahr = Double.parseDouble(sparbetrag);
             System.out.println(SparbetragJahr);
         }
 
@@ -328,7 +328,7 @@ public class PensionBut extends javax.swing.JFrame {
         if ("".equals(zinsbetrag)) {
             System.out.println("Kein Wert");
         } else {
-            Zinsbetrag = Integer.parseInt(zinsbetrag);
+            Zinsbetrag = Double.parseDouble(zinsbetrag);
             System.out.println(Zinsbetrag);
         }
 
@@ -345,7 +345,7 @@ public class PensionBut extends javax.swing.JFrame {
             AnfangJahrRB.setEnabled(true);
             AnfangMonatRB.setEnabled(false);
             EndeMonatRB.setEnabled(false);
-            
+
         }
     }//GEN-LAST:event_yearlyRBActionPerformed
 
@@ -364,40 +364,69 @@ public class PensionBut extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_monthlyRBActionPerformed
 
-
-
-
     private void keineBuchstabenImZinsbetrag(int maxLength) {
         ((AbstractDocument) ZinsbetragTextField.getDocument()).setDocumentFilter(new DocumentFilter() {
             @Override
             public void insertString(DocumentFilter.FilterBypass fb, int offset, String text, AttributeSet attrs) throws BadLocationException {
-                if (text.matches("[0-9]+") && (fb.getDocument().getLength() + text.length()) <= maxLength) {
-                    super.insertString(fb, offset, text, attrs);
+                String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
+                try {
+                    double number = Double.parseDouble(newText);
+                    if (number >= 0 && number <= Double.MAX_VALUE && ("" + number).length() <= maxLength) {
+                        super.insertString(fb, offset, text, attrs);
+                    }
+                } catch (NumberFormatException e) {
+                    // ignore non-double input
                 }
             }
 
             @Override
             public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
-                if (text.matches("[0-9]+") && (fb.getDocument().getLength() + text.length() - length) <= maxLength) {
+                String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
+                if (newText.equals("-") && maxLength > 0) {
                     super.replace(fb, offset, length, text, attrs);
+                    return;
+                }
+                try {
+                    double number = Double.parseDouble(newText);
+                    if (number >= 0 && number <= Double.MAX_VALUE && ("" + number).length() <= maxLength) {
+                        super.replace(fb, offset, length, text, attrs);
+                    }
+                } catch (NumberFormatException e) {
+                    // ignore non-double input
                 }
             }
         });
     }
-    
+
     private void keineBuchstabenImSparbetragMonatTextField(int maxLength) {
         ((AbstractDocument) SparbetragMonatTextField.getDocument()).setDocumentFilter(new DocumentFilter() {
             @Override
             public void insertString(DocumentFilter.FilterBypass fb, int offset, String text, AttributeSet attrs) throws BadLocationException {
-                if (text.matches("[0-9]+") && (fb.getDocument().getLength() + text.length()) <= maxLength) {
-                    super.insertString(fb, offset, text, attrs);
+                String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
+                try {
+                    double number = Double.parseDouble(newText);
+                    if (number >= 0 && number <= Double.MAX_VALUE && ("" + number).length() <= maxLength) {
+                        super.insertString(fb, offset, text, attrs);
+                    }
+                } catch (NumberFormatException e) {
+                    // ignore non-double input
                 }
             }
 
             @Override
             public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
-                if (text.matches("[0-9]+") && (fb.getDocument().getLength() + text.length() - length) <= maxLength) {
+                String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
+                if (newText.equals("-") && maxLength > 0) {
                     super.replace(fb, offset, length, text, attrs);
+                    return;
+                }
+                try {
+                    double number = Double.parseDouble(newText);
+                    if (number >= 0 && number <= Double.MAX_VALUE && ("" + number).length() <= maxLength) {
+                        super.replace(fb, offset, length, text, attrs);
+                    }
+                } catch (NumberFormatException e) {
+                    // ignore non-double input
                 }
             }
         });
@@ -407,15 +436,31 @@ public class PensionBut extends javax.swing.JFrame {
         ((AbstractDocument) SparbetragTextField.getDocument()).setDocumentFilter(new DocumentFilter() {
             @Override
             public void insertString(DocumentFilter.FilterBypass fb, int offset, String text, AttributeSet attrs) throws BadLocationException {
-                if (text.matches("[0-9]+") && (fb.getDocument().getLength() + text.length()) <= maxLength) {
-                    super.insertString(fb, offset, text, attrs);
+                String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
+                try {
+                    double number = Double.parseDouble(newText);
+                    if (number >= 0 && number <= Double.MAX_VALUE && ("" + number).length() <= maxLength) {
+                        super.insertString(fb, offset, text, attrs);
+                    }
+                } catch (NumberFormatException e) {
+                    // ignore non-double input
                 }
             }
 
             @Override
             public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
-                if (text.matches("[0-9]+") && (fb.getDocument().getLength() + text.length() - length) <= maxLength) {
+                String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
+                if (newText.equals("-") && maxLength > 0) {
                     super.replace(fb, offset, length, text, attrs);
+                    return;
+                }
+                try {
+                    double number = Double.parseDouble(newText);
+                    if (number >= 0 && number <= Double.MAX_VALUE && ("" + number).length() <= maxLength) {
+                        super.replace(fb, offset, length, text, attrs);
+                    }
+                } catch (NumberFormatException e) {
+                    // ignore non-double input
                 }
             }
         });
@@ -425,20 +470,35 @@ public class PensionBut extends javax.swing.JFrame {
         ((AbstractDocument) StartkapitalTextField.getDocument()).setDocumentFilter(new DocumentFilter() {
             @Override
             public void insertString(DocumentFilter.FilterBypass fb, int offset, String text, AttributeSet attrs) throws BadLocationException {
-                if (text.matches("[0-9]+") && (fb.getDocument().getLength() + text.length()) <= maxLength) {
-                    super.insertString(fb, offset, text, attrs);
+                String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
+                try {
+                    double number = Double.parseDouble(newText);
+                    if (number >= 0 && number <= Double.MAX_VALUE && ("" + number).length() <= maxLength) {
+                        super.insertString(fb, offset, text, attrs);
+                    }
+                } catch (NumberFormatException e) {
+                    // ignore non-double input
                 }
             }
 
             @Override
             public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
-                if (text.matches("[0-9]+") && (fb.getDocument().getLength() + text.length() - length) <= maxLength) {
+                String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
+                if (newText.equals("-") && maxLength > 0) {
                     super.replace(fb, offset, length, text, attrs);
+                    return;
+                }
+                try {
+                    double number = Double.parseDouble(newText);
+                    if (number >= 0 && number <= Double.MAX_VALUE && ("" + number).length() <= maxLength) {
+                        super.replace(fb, offset, length, text, attrs);
+                    }
+                } catch (NumberFormatException e) {
+                    // ignore non-double input
                 }
             }
         });
     }
-
 
     /**
      * @param args the command line arguments
