@@ -62,7 +62,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="head" max="32767" attributes="0"/>
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
@@ -75,24 +75,25 @@
                               </Group>
                               <Component id="SpeichernButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="523" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="AnfangJahrRB" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="StartkapitalLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="StartkapitalTextField" min="-2" pref="88" max="-2" attributes="0"/>
+                              <Component id="AnfangJahrRB" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="EndeJahrRB" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="SparbetragLabel" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="SparbetragLabel" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                          <Component id="EndeJahrRB" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
@@ -134,7 +135,7 @@
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="88" max="32767" attributes="0"/>
+                                  <EmptySpace pref="99" max="32767" attributes="0"/>
                                   <Component id="ZinsbetragTextField" min="-2" pref="128" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
                               </Group>
@@ -155,19 +156,21 @@
                   </Group>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="AnfangJahrRB" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="EndeJahrRB" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="AnfangMonatRB" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="EndeMonatRB" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="EndeJahrRB" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="AnfangJahrRB" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="StartkapitalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="SparbetragLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="DauerLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="SparbetragMonatLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="DauerLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="StartkapitalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="SparbetragLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="SparbetragMonatLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="DauerLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -179,7 +182,7 @@
                       <Component id="EinzahltagSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="ZinsbetragTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="182" max="32767" attributes="0"/>
+                  <EmptySpace pref="187" max="32767" attributes="0"/>
                   <Component id="SpeichernButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               </Group>
@@ -264,9 +267,6 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="SparbetragMonatTextField">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SparbetragMonatTextFieldActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="SparbetragLabel">
           <Properties>
@@ -323,9 +323,6 @@
         <Component class="javax.swing.JTextField" name="ZinsbetragTextField">
         </Component>
         <Component class="javax.swing.JTextField" name="StartkapitalTextField">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StartkapitalTextFieldActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="DauerLabel">
           <Properties>
@@ -338,18 +335,6 @@
               <ComponentRef name="AnfangEndeJahr"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Anfang des Jahres"/>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AnfangJahrRBActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="EndeJahrRB">
-          <Properties>
-            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="AnfangEndeJahr"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Ende des Jahres"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -368,6 +353,15 @@
               <ComponentRef name="AnfangEndeMonat"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Anfang des Monats"/>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="EndeJahrRB">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="AnfangEndeJahr"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Ende des Jahres"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
