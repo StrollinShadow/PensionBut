@@ -38,6 +38,9 @@ public class Sparer extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         head = new javax.swing.JPanel();
         titel = new javax.swing.JLabel();
@@ -87,6 +90,7 @@ public class Sparer extends javax.swing.JFrame {
                 .addContainerGap(86, Short.MAX_VALUE))
         );
 
+        buttonGroup3.add(monthlyRB);
         monthlyRB.setText("Monatlich");
         monthlyRB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +98,7 @@ public class Sparer extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup3.add(yearlyRB);
         yearlyRB.setText("Jährlich");
         yearlyRB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,15 +132,19 @@ public class Sparer extends javax.swing.JFrame {
 
         DauerLabel.setText("Dauer (Jahre):");
 
+        buttonGroup1.add(AnfangJahrRB);
         AnfangJahrRB.setText("Anfang des Jahres");
         AnfangJahrRB.setEnabled(false);
 
+        buttonGroup2.add(EndeMonatRB);
         EndeMonatRB.setText("Ende des Monats");
         EndeMonatRB.setEnabled(false);
 
+        buttonGroup2.add(AnfangMonatRB);
         AnfangMonatRB.setText("Anfang des Monats");
         AnfangMonatRB.setEnabled(false);
 
+        buttonGroup1.add(EndeJahrRB);
         EndeJahrRB.setText("Ende des Jahres");
         EndeJahrRB.setEnabled(false);
 
@@ -537,6 +546,9 @@ public class Sparer extends javax.swing.JFrame {
     private javax.swing.JLabel StartkapitalLabel;
     private javax.swing.JTextField StartkapitalTextField;
     private javax.swing.JTextField ZinsbetragTextField;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JPanel head;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
