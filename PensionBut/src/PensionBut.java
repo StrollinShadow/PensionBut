@@ -33,6 +33,23 @@ public class PensionBut extends javax.swing.JFrame {
         body = new javax.swing.JPanel();
         monthlyRB = new javax.swing.JRadioButton();
         yearlyRB = new javax.swing.JRadioButton();
+        SpeichernButton = new javax.swing.JButton();
+        SparbetragMonatTextField = new javax.swing.JTextField();
+        SparbetragLabel = new javax.swing.JLabel();
+        DauerSpinner = new javax.swing.JSpinner();
+        SparbetragMonatLabel = new javax.swing.JLabel();
+        DauerLabel2 = new javax.swing.JLabel();
+        EinzahltagSpinner = new javax.swing.JSpinner();
+        SparbetragTextField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        ZinsbetragTextField = new javax.swing.JTextField();
+        StartkapitalTextField = new javax.swing.JTextField();
+        DauerLabel = new javax.swing.JLabel();
+        AnfangJahrRB = new javax.swing.JRadioButton();
+        EndeMonatRB = new javax.swing.JRadioButton();
+        AnfangMonatRB = new javax.swing.JRadioButton();
+        EndeJahrRB = new javax.swing.JRadioButton();
+        StartkapitalLabel = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -99,20 +116,145 @@ public class PensionBut extends javax.swing.JFrame {
                     .addComponent(yearlyRB, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(636, Short.MAX_VALUE))
         );
+        SpeichernButton.setText("Zins berechnen");
+        SpeichernButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SpeichernButtonActionPerformed(evt);
+            }
+        });
+
+        SparbetragLabel.setText("Jährlicher Sparbetrag");
+
+        DauerSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 99, 1));
+        DauerSpinner.setFocusable(false);
+        DauerSpinner.setMaximumSize(new java.awt.Dimension(12, 12));
+        DauerSpinner.setMinimumSize(new java.awt.Dimension(0, 0));
+        DauerSpinner.setRequestFocusEnabled(false);
+        DauerSpinner.setValue(1);
+
+        SparbetragMonatLabel.setText("Monatlicher Sparbetrag");
+
+        DauerLabel2.setText("Dauer (Monate)");
+
+        EinzahltagSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
+
+        jLabel1.setText("Zinssatz");
+
+        DauerLabel.setText("Dauer (Jahre):");
+
+        AnfangEndeJahr.add(AnfangJahrRB);
+        AnfangJahrRB.setText("Anfang des Jahres");
+        AnfangJahrRB.setEnabled(false);
+
+        AnfangEndeMonat.add(EndeMonatRB);
+        EndeMonatRB.setText("Ende des Monats");
+        EndeMonatRB.setEnabled(false);
+
+        AnfangEndeMonat.add(AnfangMonatRB);
+        AnfangMonatRB.setText("Anfang des Monats");
+        AnfangMonatRB.setEnabled(false);
+
+        AnfangEndeJahr.add(EndeJahrRB);
+        EndeJahrRB.setText("Ende des Jahres");
+        EndeJahrRB.setEnabled(false);
+
+        StartkapitalLabel.setText("Startkapital");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(head, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(SparbetragTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(SparbetragLabel))
+                                .addGap(30, 30, 30)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(DauerLabel)
+                                    .addComponent(DauerSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(yearlyRB)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(EndeJahrRB)
+                                    .addComponent(AnfangJahrRB))))
+                        .addGap(121, 121, 121)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(SparbetragMonatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(55, 55, 55)
+                                .addComponent(EinzahltagSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(monthlyRB)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(EndeMonatRB)
+                                    .addComponent(AnfangMonatRB)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(SparbetragMonatLabel)
+                                .addGap(67, 67, 67)
+                                .addComponent(DauerLabel2)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(StartkapitalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(StartkapitalLabel))
+                        .addGap(413, 413, 413))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(103, 103, 103)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(ZinsbetragTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(SpeichernButton))
+                .addContainerGap(889, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(head, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(body, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(StartkapitalLabel)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(StartkapitalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ZinsbetragTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(yearlyRB)
+                    .addComponent(monthlyRB)
+                    .addComponent(AnfangJahrRB)
+                    .addComponent(AnfangMonatRB))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EndeJahrRB)
+                    .addComponent(EndeMonatRB))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SparbetragLabel)
+                    .addComponent(DauerLabel)
+                    .addComponent(SparbetragMonatLabel)
+                    .addComponent(DauerLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SparbetragTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DauerSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SparbetragMonatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EinzahltagSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
+                .addComponent(SpeichernButton)
+                .addGap(32, 32, 32))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -165,7 +307,24 @@ public class PensionBut extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel body;
+    private javax.swing.ButtonGroup AnfangEndeJahr;
+    private javax.swing.ButtonGroup AnfangEndeMonat;
+    private javax.swing.JRadioButton AnfangJahrRB;
+    private javax.swing.JRadioButton AnfangMonatRB;
+    private javax.swing.JLabel DauerLabel;
+    private javax.swing.JLabel DauerLabel2;
+    private javax.swing.JSpinner DauerSpinner;
+    private javax.swing.JSpinner EinzahltagSpinner;
+    private javax.swing.JRadioButton EndeJahrRB;
+    private javax.swing.JRadioButton EndeMonatRB;
+    private javax.swing.JLabel SparbetragLabel;
+    private javax.swing.JLabel SparbetragMonatLabel;
+    private javax.swing.JTextField SparbetragMonatTextField;
+    private javax.swing.JTextField SparbetragTextField;
+    private javax.swing.JButton SpeichernButton;
+    private javax.swing.JLabel StartkapitalLabel;
+    private javax.swing.JTextField StartkapitalTextField;
+    private javax.swing.JTextField ZinsbetragTextField;
     private javax.swing.JPanel head;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
