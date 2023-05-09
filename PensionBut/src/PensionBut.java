@@ -3,6 +3,8 @@ import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -322,6 +324,37 @@ public class PensionBut extends javax.swing.JFrame {
         } else {
             Zinsbetrag = Double.parseDouble(zinsbetrag);
             System.out.println(Zinsbetrag);
+        }
+        
+        if (EndeMonatRB.isSelected()){
+                LocalDate currentDate = LocalDate.now();
+    LocalDate lastDayOfMonth = currentDate.withDayOfMonth(currentDate.lengthOfMonth());
+    DayOfWeek lastDayOfWeek = lastDayOfMonth.getDayOfWeek();
+    LocalDate nearestWorkday;
+    if (lastDayOfWeek == DayOfWeek.SATURDAY) {
+        nearestWorkday = lastDayOfMonth.minusDays(1);
+    } else if (lastDayOfWeek == DayOfWeek.SUNDAY) {
+        nearestWorkday = lastDayOfMonth.minusDays(2);
+    } else {
+        nearestWorkday = lastDayOfMonth;
+    }
+        //hier macht man so wo das hin kommt;
+
+        }
+        else if (AnfangMonatRB.isSelected()){
+                 LocalDate currentDate = LocalDate.now();
+        LocalDate nextMonth = currentDate.plusMonths(1).withDayOfMonth(1);
+        DayOfWeek nextMonthFirstDayOfWeek = nextMonth.getDayOfWeek();
+        LocalDate nearestWorkday;
+        if (nextMonthFirstDayOfWeek == DayOfWeek.SATURDAY) {
+            nearestWorkday = nextMonth.plusDays(2);
+        } else if (nextMonthFirstDayOfWeek == DayOfWeek.SUNDAY) {
+            nearestWorkday = nextMonth.plusDays(1);
+        } else {
+            nearestWorkday = nextMonth;
+        }
+        //hier macht man so wo das hin kommt;
+    
         }
 
     }//GEN-LAST:event_SpeichernButtonActionPerformed
