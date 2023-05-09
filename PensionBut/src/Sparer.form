@@ -48,32 +48,40 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="head" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="SparbetragLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="DauerLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="yearlyRB" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="EndeJahrRB" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="AnfangJahrRB" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="yearlyRB" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="EndeJahrRB" max="32767" attributes="0"/>
+                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="AnfangJahrRB" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="SpeichernButton" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="SparbetragTextField" max="32767" attributes="0"/>
+                                          <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="SpeichernButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="SparbetragTextField" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                      <Component id="DauerSpinner" min="-2" pref="71" max="-2" attributes="0"/>
-                                  </Group>
+                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Component id="DauerSpinner" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -81,53 +89,63 @@
                                   <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="monthlyRB" min="-2" max="-2" attributes="0"/>
+                                          <Component id="monthlyRB" max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                                                  <Component id="EndeMonatRB" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="EndeMonatRB" max="32767" attributes="0"/>
+                                                  <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="AnfangMonatRB" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="AnfangMonatRB" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
+                                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="SparbetragMonatTextField" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
+                                              <Component id="SparbetragMonatTextField" alignment="0" max="32767" attributes="0"/>
                                               <Component id="SparbetragMonatLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="DauerLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="EinzahltagSpinner" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="EinzahltagSpinner" max="32767" attributes="0"/>
+                                                  <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="238" max="-2" attributes="0"/>
+                                  <Component id="jButton1" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="StartkapitalTextField" alignment="0" min="-2" pref="88" max="-2" attributes="0"/>
-                              <Component id="StartkapitalLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="StartkapitalTextField" max="32767" attributes="0"/>
+                                  <EmptySpace min="208" pref="208" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="ZinsbetragTextField" min="-2" pref="85" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="StartkapitalLabel" max="32767" attributes="0"/>
+                                  <EmptySpace min="33" pref="33" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel1" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="ZinsbetragTextField" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -141,27 +159,27 @@
                   <Component id="head" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="StartkapitalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="StartkapitalLabel" alignment="3" max="32767" attributes="0"/>
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="StartkapitalTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="ZinsbetragTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="StartkapitalTextField" alignment="3" max="32767" attributes="0"/>
+                      <Component id="ZinsbetragTextField" alignment="3" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="yearlyRB" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="monthlyRB" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="AnfangJahrRB" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="AnfangMonatRB" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="yearlyRB" alignment="3" max="32767" attributes="0"/>
+                      <Component id="monthlyRB" alignment="3" max="32767" attributes="0"/>
+                      <Component id="AnfangJahrRB" alignment="3" max="32767" attributes="0"/>
+                      <Component id="AnfangMonatRB" alignment="3" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="EndeJahrRB" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="EndeMonatRB" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="EndeJahrRB" alignment="3" max="32767" attributes="0"/>
+                      <Component id="EndeMonatRB" alignment="3" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="SparbetragLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="DauerLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -170,17 +188,23 @@
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="SparbetragTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="DauerSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="SparbetragMonatTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="EinzahltagSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="SparbetragTextField" alignment="3" max="32767" attributes="0"/>
+                      <Group type="102" alignment="3" attributes="0">
+                          <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                          <Component id="DauerSpinner" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="SparbetragMonatTextField" alignment="3" max="32767" attributes="0"/>
+                      <Group type="102" alignment="3" attributes="0">
+                          <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                          <Component id="EinzahltagSpinner" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="SpeichernButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="SpeichernButton" alignment="3" max="32767" attributes="0"/>
                       <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
