@@ -1,8 +1,14 @@
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -41,6 +47,7 @@ public class Sparer extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         head = new javax.swing.JPanel();
         titel = new javax.swing.JLabel();
@@ -64,6 +71,12 @@ public class Sparer extends javax.swing.JFrame {
         EndeJahrRB = new javax.swing.JRadioButton();
         StartkapitalLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        einzahldatum = new javax.swing.JLabel();
+        einzahldatumergebnis = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        gesamtsumme = new javax.swing.JLabel();
+
+        jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -124,7 +137,7 @@ public class Sparer extends javax.swing.JFrame {
 
         SparbetragMonatLabel.setText("Monatlicher Sparbetrag");
 
-        DauerLabel2.setText("Tag im Monat");
+        DauerLabel2.setText("Dauer (Monate)");
 
         EinzahltagSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
 
@@ -150,12 +163,20 @@ public class Sparer extends javax.swing.JFrame {
 
         StartkapitalLabel.setText("Startkapital");
 
-        jButton1.setText("Zurück zur Startseite");
+        jButton1.setText(" Zurück zur Startseite");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        einzahldatum.setText("Einzahldatum: ");
+
+        einzahldatumergebnis.setText("yyyy-mm-dd");
+
+        jLabel3.setText("Erebnis:");
+
+        gesamtsumme.setText("0");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -181,45 +202,33 @@ public class Sparer extends javax.swing.JFrame {
                                     .addComponent(AnfangJahrRB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(30, 30, 30))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(SpeichernButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(13, 13, 13))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(SparbetragTextField)
-                                        .addGap(4, 4, 4)))
-                                .addGap(28, 28, 28)
+                                .addComponent(SparbetragTextField)
+                                .addGap(32, 32, 32)
                                 .addComponent(DauerSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(102, 102, 102)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(102, 102, 102)
+                                .addComponent(monthlyRB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(monthlyRB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(19, 19, 19)
-                                                .addComponent(EndeMonatRB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGap(11, 11, 11))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(18, 18, 18)
-                                                .addComponent(AnfangMonatRB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                        .addGap(8, 8, 8))
+                                        .addGap(19, 19, 19)
+                                        .addComponent(EndeMonatRB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(11, 11, 11))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(SparbetragMonatTextField)
-                                            .addComponent(SparbetragMonatLabel))
-                                        .addGap(28, 28, 28)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(DauerLabel2)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(EinzahltagSpinner)
-                                                .addGap(28, 28, 28)))))
-                                .addGap(65, 65, 65))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(238, 238, 238)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                                .addContainerGap())))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(AnfangMonatRB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(8, 8, 8))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(SparbetragMonatTextField)
+                                    .addComponent(SparbetragMonatLabel))
+                                .addGap(28, 28, 28)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(DauerLabel2)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(EinzahltagSpinner)
+                                        .addGap(28, 28, 28)))))
+                        .addGap(65, 65, 65))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -234,7 +243,21 @@ public class Sparer extends javax.swing.JFrame {
                                 .addGap(98, 98, 98))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(ZinsbetragTextField)
-                                .addGap(37, 37, 37))))))
+                                .addGap(37, 37, 37))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(SpeichernButton, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(einzahldatum)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(gesamtsumme)
+                            .addComponent(einzahldatumergebnis))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,16 +288,24 @@ public class Sparer extends javax.swing.JFrame {
                     .addComponent(SparbetragMonatLabel)
                     .addComponent(DauerLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(SparbetragTextField)
+                        .addComponent(SparbetragMonatTextField))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DauerSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EinzahltagSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SparbetragTextField)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(DauerSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(SparbetragMonatTextField)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(EinzahltagSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(50, 50, 50)
+                    .addComponent(einzahldatum)
+                    .addComponent(einzahldatumergebnis))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(gesamtsumme))
+                .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SpeichernButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1))
@@ -360,7 +391,7 @@ public class Sparer extends javax.swing.JFrame {
 
         int dauer = (int) DauerSpinner.getValue();
         SparbetragJahrDauer = dauer;
-        System.out.println(SparbetragJahrDauer);
+        System.out.println(SparbetragJahrDauer);    
 
         String zinsbetrag = ZinsbetragTextField.getText();
 
@@ -370,6 +401,86 @@ public class Sparer extends javax.swing.JFrame {
             Zinsbetrag = Double.parseDouble(zinsbetrag);
             System.out.println(Zinsbetrag);
         }
+        
+        int AnzJahre = (Integer) DauerSpinner.getValue();
+        int AnzMonate = (Integer) EinzahltagSpinner.getValue();
+        
+        if (AnfangJahrRB.isSelected()) {
+    LocalDate currentDate = LocalDate.now();
+    LocalDate firstDayOfYear = currentDate.with(TemporalAdjusters.firstDayOfYear());
+    DayOfWeek firstDayOfWeek = firstDayOfYear.getDayOfWeek();
+    LocalDate nearestWorkday;
+    if (firstDayOfWeek == DayOfWeek.SATURDAY) {
+        nearestWorkday = firstDayOfYear.plusDays(2);
+    } else if (firstDayOfWeek == DayOfWeek.SUNDAY) {
+        nearestWorkday = firstDayOfYear.plusDays(1);
+    } else {
+        nearestWorkday = firstDayOfYear;
+    }
+    einzahldatumergebnis.setText(String.valueOf(nearestWorkday));
+}
+        if (EndeJahrRB.isSelected()) {
+    LocalDate currentDate = LocalDate.now();
+    LocalDate lastDayOfYear = currentDate.with(TemporalAdjusters.lastDayOfYear());
+    DayOfWeek lastDayOfWeek = lastDayOfYear.getDayOfWeek();
+    LocalDate nearestWorkday;
+    if (lastDayOfWeek == DayOfWeek.SATURDAY) {
+        nearestWorkday = lastDayOfYear.minusDays(1);
+    } else if (lastDayOfWeek == DayOfWeek.SUNDAY) {
+        nearestWorkday = lastDayOfYear.minusDays(2);
+    } else {
+        nearestWorkday = lastDayOfYear;
+    }
+    einzahldatumergebnis.setText(String.valueOf(nearestWorkday));
+}
+        
+         if (EndeMonatRB.isSelected()){
+                LocalDate currentDate = LocalDate.now();
+    LocalDate lastDayOfMonth = currentDate.withDayOfMonth(currentDate.lengthOfMonth());
+    DayOfWeek lastDayOfWeek = lastDayOfMonth.getDayOfWeek();
+    LocalDate nearestWorkday;
+    if (lastDayOfWeek == DayOfWeek.SATURDAY) {
+        nearestWorkday = lastDayOfMonth.minusDays(1);
+    } else if (lastDayOfWeek == DayOfWeek.SUNDAY) {
+        nearestWorkday = lastDayOfMonth.minusDays(2);
+    } else {
+        nearestWorkday = lastDayOfMonth;
+    } 
+    einzahldatumergebnis.setText(String.valueOf(nearestWorkday));
+        //hier macht man so wo das hin kommt;
+
+        }
+        else if (AnfangMonatRB.isSelected()){
+                 LocalDate currentDate = LocalDate.now();
+        LocalDate nextMonth = currentDate.plusMonths(1).withDayOfMonth(1);
+        DayOfWeek nextMonthFirstDayOfWeek = nextMonth.getDayOfWeek();
+        LocalDate nearestWorkday;
+        if (nextMonthFirstDayOfWeek == DayOfWeek.SATURDAY) {
+            nearestWorkday = nextMonth.plusDays(2);
+        } else if (nextMonthFirstDayOfWeek == DayOfWeek.SUNDAY) {
+            nearestWorkday = nextMonth.plusDays(1);
+        } else { 
+            nearestWorkday = nextMonth;
+        } 
+        einzahldatumergebnis.setText(String.valueOf(nearestWorkday));
+        }
+         
+         if(yearlyRB.isSelected()){
+             for(int i = 0; i < AnzJahre; i++){
+                 Startkapital += ((Startkapital + SparbetragJahr) * Zinsbetrag)/100;
+             }
+             BigDecimal bd = new BigDecimal(Startkapital).setScale(2, RoundingMode.HALF_UP);
+             double Ergebnis = bd.doubleValue();
+             gesamtsumme.setText(String.valueOf(Ergebnis));
+         }
+         else if(monthlyRB.isSelected()){
+             for(int i = 0; i < AnzMonate; i++){
+                 Startkapital += ((Startkapital + SparbetragMonat) * Zinsbetrag)/100;
+             }
+             BigDecimal bd = new BigDecimal(Startkapital).setScale(2, RoundingMode.HALF_UP);
+             double Ergebnis = bd.doubleValue();
+             gesamtsumme.setText(String.valueOf(Ergebnis));
+         }
     }//GEN-LAST:event_SpeichernButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -566,9 +677,14 @@ public class Sparer extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.JLabel einzahldatum;
+    private javax.swing.JLabel einzahldatumergebnis;
+    private javax.swing.JLabel gesamtsumme;
     private javax.swing.JPanel head;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton monthlyRB;
     private javax.swing.JLabel titel;
