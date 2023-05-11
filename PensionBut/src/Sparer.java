@@ -33,7 +33,6 @@ public class Sparer extends javax.swing.JFrame {
         SparbetragMonatTextField.setEnabled(false);
         DauerSpinner.setEnabled(false);
         SparbetragTextField.setEnabled(false);
-        ZinsbetragTextField.setEnabled(true);
         keineBuchstabenImStartkapitalTextField(10);
         keineBuchstabenImSparbetragTextField(10);
         keineBuchstabenImSparbetragMonatTextField(10);
