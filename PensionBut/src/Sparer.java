@@ -1,13 +1,16 @@
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.NumberFormat;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
+import java.util.Locale;
 
 
 /*
@@ -118,7 +121,7 @@ public class Sparer extends javax.swing.JFrame {
             }
         });
 
-        SpeichernButton.setText("Zins berechnen");
+        SpeichernButton.setText("Berechnen");
         SpeichernButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SpeichernButtonActionPerformed(evt);
@@ -171,9 +174,9 @@ public class Sparer extends javax.swing.JFrame {
 
         einzahldatum.setText("Einzahldatum: ");
 
-        einzahldatumergebnis.setText("yyyy-mm-dd");
+        einzahldatumergebnis.setText("dd.MM.yyyy");
 
-        jLabel3.setText("Erebnis:");
+        jLabel3.setText("Ergebnis:");
 
         gesamtsumme.setText("0");
 
@@ -393,7 +396,7 @@ public class Sparer extends javax.swing.JFrame {
 
         int dauer = (int) DauerSpinner.getValue();
         SparbetragJahrDauer = dauer;
-        System.out.println(SparbetragJahrDauer);    
+        System.out.println(SparbetragJahrDauer);
 
         String zinsbetrag = ZinsbetragTextField.getText();
 
@@ -403,88 +406,91 @@ public class Sparer extends javax.swing.JFrame {
             Zinsbetrag = Double.parseDouble(zinsbetrag);
             System.out.println(Zinsbetrag);
         }
-        
+
         int AnzJahre = (Integer) DauerSpinner.getValue();
         int AnzMonate = (Integer) EinzahltagSpinner.getValue();
-        
+
         if (AnfangJahrRB.isSelected()) {
-    LocalDate currentDate = LocalDate.now();
-    LocalDate firstDayOfYear = currentDate.with(TemporalAdjusters.firstDayOfYear());
-    DayOfWeek firstDayOfWeek = firstDayOfYear.getDayOfWeek();
-    LocalDate nearestWorkday;
-    if (firstDayOfWeek == DayOfWeek.SATURDAY) {
-        nearestWorkday = firstDayOfYear.plusDays(2);
-    } else if (firstDayOfWeek == DayOfWeek.SUNDAY) {
-        nearestWorkday = firstDayOfYear.plusDays(1);
-    } else {
-        nearestWorkday = firstDayOfYear;
-    }
-    einzahldatumergebnis.setText(String.valueOf(nearestWorkday));
-}
+            LocalDate currentDate = LocalDate.now();
+            LocalDate firstDayOfYear = currentDate.with(TemporalAdjusters.firstDayOfYear());
+            DayOfWeek firstDayOfWeek = firstDayOfYear.getDayOfWeek();
+            LocalDate nearestWorkday;
+            if (firstDayOfWeek == DayOfWeek.SATURDAY) {
+                nearestWorkday = firstDayOfYear.plusDays(2);
+            } else if (firstDayOfWeek == DayOfWeek.SUNDAY) {
+                nearestWorkday = firstDayOfYear.plusDays(1);
+            } else {
+                nearestWorkday = firstDayOfYear;
+            }
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+            einzahldatumergebnis.setText(formatter.format(nearestWorkday));
+        }
         if (EndeJahrRB.isSelected()) {
-    LocalDate currentDate = LocalDate.now();
-    LocalDate lastDayOfYear = currentDate.with(TemporalAdjusters.lastDayOfYear());
-    DayOfWeek lastDayOfWeek = lastDayOfYear.getDayOfWeek();
-    LocalDate nearestWorkday;
-    if (lastDayOfWeek == DayOfWeek.SATURDAY) {
-        nearestWorkday = lastDayOfYear.minusDays(1);
-    } else if (lastDayOfWeek == DayOfWeek.SUNDAY) {
-        nearestWorkday = lastDayOfYear.minusDays(2);
-    } else {
-        nearestWorkday = lastDayOfYear;
-    }
-    einzahldatumergebnis.setText(String.valueOf(nearestWorkday));
-}
-        
-         if (EndeMonatRB.isSelected()){
-                LocalDate currentDate = LocalDate.now();
-    LocalDate lastDayOfMonth = currentDate.withDayOfMonth(currentDate.lengthOfMonth());
-    DayOfWeek lastDayOfWeek = lastDayOfMonth.getDayOfWeek();
-    LocalDate nearestWorkday;
-    if (lastDayOfWeek == DayOfWeek.SATURDAY) {
-        nearestWorkday = lastDayOfMonth.minusDays(1);
-    } else if (lastDayOfWeek == DayOfWeek.SUNDAY) {
-        nearestWorkday = lastDayOfMonth.minusDays(2);
-    } else {
-        nearestWorkday = lastDayOfMonth;
-    } 
-    einzahldatumergebnis.setText(String.valueOf(nearestWorkday));
-        //hier macht man so wo das hin kommt;
+            LocalDate currentDate = LocalDate.now();
+            LocalDate lastDayOfYear = currentDate.with(TemporalAdjusters.lastDayOfYear());
+            DayOfWeek lastDayOfWeek = lastDayOfYear.getDayOfWeek();
+            LocalDate nearestWorkday;
+            if (lastDayOfWeek == DayOfWeek.SATURDAY) {
+                nearestWorkday = lastDayOfYear.minusDays(1);
+            } else if (lastDayOfWeek == DayOfWeek.SUNDAY) {
+                nearestWorkday = lastDayOfYear.minusDays(2);
+            } else {
+                nearestWorkday = lastDayOfYear;
+            }
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+            einzahldatumergebnis.setText(formatter.format(nearestWorkday));
+        }
+
+        if (EndeMonatRB.isSelected()) {
+            LocalDate currentDate = LocalDate.now();
+            LocalDate lastDayOfMonth = currentDate.withDayOfMonth(currentDate.lengthOfMonth());
+            DayOfWeek lastDayOfWeek = lastDayOfMonth.getDayOfWeek();
+            LocalDate nearestWorkday;
+            if (lastDayOfWeek == DayOfWeek.SATURDAY) {
+                nearestWorkday = lastDayOfMonth.minusDays(1);
+            } else if (lastDayOfWeek == DayOfWeek.SUNDAY) {
+                nearestWorkday = lastDayOfMonth.minusDays(2);
+            } else {
+                nearestWorkday = lastDayOfMonth;
+            }
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+            String formattedDate = nearestWorkday.format(formatter);
+            einzahldatumergebnis.setText(formattedDate);
+        } else if (AnfangMonatRB.isSelected()) {
+            LocalDate currentDate = LocalDate.now();
+            LocalDate nextMonth = currentDate.plusMonths(1).withDayOfMonth(1);
+            DayOfWeek nextMonthFirstDayOfWeek = nextMonth.getDayOfWeek();
+            LocalDate nearestWorkday;
+            if (nextMonthFirstDayOfWeek == DayOfWeek.SATURDAY) {
+                nearestWorkday = nextMonth.plusDays(2);
+            } else if (nextMonthFirstDayOfWeek == DayOfWeek.SUNDAY) {
+                nearestWorkday = nextMonth.plusDays(1);
+            } else {
+                nearestWorkday = nextMonth;
+            }
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+            String formattedDate = nearestWorkday.format(formatter);
+            einzahldatumergebnis.setText(formattedDate);
+        }
+
+        if (yearlyRB.isSelected()) {
+            for (int i = 0; i < AnzJahre; i++) {
+                Startkapital += Startkapital + SparbetragJahr;
+                Startkapital += (Startkapital * Zinsbetrag) / 100;
+            }
+            BigDecimal bd = new BigDecimal(Startkapital).setScale(2, RoundingMode.HALF_UP);
+            double Ergebnis = bd.doubleValue();
+            gesamtsumme.setText(String.valueOf(Ergebnis));
+        } else if (monthlyRB.isSelected()) {
+            for (int i = 0; i < AnzMonate; i++) {
+                Startkapital += Startkapital + SparbetragMonat;
+                Startkapital += (Startkapital * Zinsbetrag) / 100;
+            }
+            BigDecimal bd = new BigDecimal(Startkapital).setScale(2, RoundingMode.HALF_UP);
+            double Ergebnis = bd.doubleValue();
+            gesamtsumme.setText(String.valueOf(Ergebnis));
 
         }
-        else if (AnfangMonatRB.isSelected()){
-                 LocalDate currentDate = LocalDate.now();
-        LocalDate nextMonth = currentDate.plusMonths(1).withDayOfMonth(1);
-        DayOfWeek nextMonthFirstDayOfWeek = nextMonth.getDayOfWeek();
-        LocalDate nearestWorkday;
-        if (nextMonthFirstDayOfWeek == DayOfWeek.SATURDAY) {
-            nearestWorkday = nextMonth.plusDays(2);
-        } else if (nextMonthFirstDayOfWeek == DayOfWeek.SUNDAY) {
-            nearestWorkday = nextMonth.plusDays(1);
-        } else { 
-            nearestWorkday = nextMonth;
-        } 
-        einzahldatumergebnis.setText(String.valueOf(nearestWorkday));
-        }
-         
-         if(yearlyRB.isSelected()){
-             for(int i = 0; i < AnzJahre; i++){
-                 Startkapital += Startkapital + SparbetragJahr;
-                 Startkapital += (Startkapital * Zinsbetrag)/100;
-             }
-             BigDecimal bd = new BigDecimal(Startkapital).setScale(2, RoundingMode.HALF_UP);
-             double Ergebnis = bd.doubleValue();
-             gesamtsumme.setText(String.valueOf(Ergebnis));
-         }
-         else if(monthlyRB.isSelected()){
-             for(int i = 0; i < AnzMonate; i++){
-                 Startkapital += Startkapital + SparbetragMonat;
-                 Startkapital += (Startkapital * Zinsbetrag)/100;
-             }
-             BigDecimal bd = new BigDecimal(Startkapital).setScale(2, RoundingMode.HALF_UP);
-             double Ergebnis = bd.doubleValue();
-             gesamtsumme.setText(String.valueOf(Ergebnis));
-         }
     }//GEN-LAST:event_SpeichernButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
