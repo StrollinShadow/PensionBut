@@ -33,7 +33,7 @@ public class Sparer extends javax.swing.JFrame {
         SparbetragMonatTextField.setEnabled(false);
         DauerSpinner.setEnabled(false);
         SparbetragTextField.setEnabled(false);
-        ZinsbetragTextField.setEnabled(false);
+        ZinsbetragTextField.setEnabled(true);
         keineBuchstabenImStartkapitalTextField(10);
         keineBuchstabenImSparbetragTextField(10);
         keineBuchstabenImSparbetragMonatTextField(10);
@@ -91,16 +91,16 @@ public class Sparer extends javax.swing.JFrame {
         headLayout.setHorizontalGroup(
             headLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headLayout.createSequentialGroup()
-                .addGap(94, 94, 94)
+                .addContainerGap()
                 .addComponent(titel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         headLayout.setVerticalGroup(
             headLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
+                .addContainerGap()
                 .addComponent(titel)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         buttonGroup3.add(monthlyRB);
@@ -239,7 +239,7 @@ public class Sparer extends javax.swing.JFrame {
                                 .addGap(33, 33, 33)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                 .addGap(98, 98, 98))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(ZinsbetragTextField)
@@ -264,10 +264,13 @@ public class Sparer extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(head, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(StartkapitalLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(StartkapitalLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(StartkapitalTextField)
                     .addComponent(ZinsbetragTextField))
@@ -320,7 +323,7 @@ public class Sparer extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

@@ -43,16 +43,16 @@ public class Startseite extends javax.swing.JFrame {
         headLayout.setHorizontalGroup(
             headLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headLayout.createSequentialGroup()
-                .addGap(94, 94, 94)
+                .addContainerGap()
                 .addComponent(titel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         headLayout.setVerticalGroup(
             headLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
+                .addContainerGap()
                 .addComponent(titel)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jButtonZumSparer.setFont(new java.awt.Font("Lucida Console", 0, 36)); // NOI18N
@@ -89,7 +89,7 @@ public class Startseite extends javax.swing.JFrame {
                 .addComponent(head, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonZumSparer, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                    .addComponent(jButtonZumSparer, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
