@@ -1,4 +1,6 @@
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 /*
@@ -12,7 +14,8 @@ import javax.swing.JFrame;
 public class Startseite extends javax.swing.JFrame {
 
     public Startseite() {
-        initComponents(); 
+        initComponents();
+        setLocationRelativeTo(null); 
     }
 
     /**
@@ -31,6 +34,9 @@ public class Startseite extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(920, 600));
+        setPreferredSize(new java.awt.Dimension(620, 459));
+        setSize(new java.awt.Dimension(620, 459));
 
         head.setBackground(new java.awt.Color(51, 188, 209));
 
