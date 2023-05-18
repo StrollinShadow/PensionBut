@@ -1,25 +1,39 @@
+
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author kai_s
  */
 public class Planer extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Planer
-     */
+    Double StartkapitalDouble;
+    Double ZinssatzDouble;
+    Double SparzielDouble;
+    Double JährlicherSparbetragDouble;
+    Double MonatlicherSparbetragDouble;
+
     public Planer() {
         initComponents();
+        setLocationRelativeTo(null);
         AnfangMonatRB.setEnabled(false);
         EndeMonatRB.setEnabled(false);
         AnfangJahrRB.setEnabled(false);
         EndeJahrRB.setEnabled(false);
         MonatlicherSparbetrag.setEnabled(false);
         JährlicherSparbetrag.setEnabled(false);
+        KeineBuchstabenImJährlicherSparbetrag(10);
+        KeineBuchstabenImMonatlicherSparbetrag(10);
+        KeineBuchstabenImSparZiel(10);
+        KeineBuchstabenImZinssatz(10);
+        KeineBuchstabenImStartkapital(10);
     }
 
     /**
@@ -56,6 +70,7 @@ public class Planer extends javax.swing.JFrame {
         StartseiteButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(850, 550));
 
         head.setBackground(new java.awt.Color(51, 188, 209));
 
@@ -119,8 +134,18 @@ public class Planer extends javax.swing.JFrame {
         jLabel5.setText("Monatlicher Sparbetrag:");
 
         BerechnenButton.setText("Berechnen");
+        BerechnenButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BerechnenButtonActionPerformed(evt);
+            }
+        });
 
         StartseiteButton.setText("Zurück zur Startseite");
+        StartseiteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StartseiteButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -146,11 +171,6 @@ public class Planer extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                         .addGap(437, 437, 437))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(BerechnenButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(StartseiteButton)
-                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(AnfangMonatRB)
@@ -167,6 +187,10 @@ public class Planer extends javax.swing.JFrame {
                                     .addComponent(JährlicherSparbetrag, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(BerechnenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(StartseiteButton))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,11 +226,10 @@ public class Planer extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(MonatlicherSparbetrag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JährlicherSparbetrag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(18, 24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BerechnenButton)
-                    .addComponent(StartseiteButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(StartseiteButton)))
         );
 
         pack();
@@ -238,9 +261,231 @@ public class Planer extends javax.swing.JFrame {
 
     }//GEN-LAST:event_JährlichRBActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void StartseiteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartseiteButtonActionPerformed
+        this.dispose();
+        Startseite Startseite = new Startseite();
+        Startseite.setVisible(true);
+        setLocationRelativeTo(null);
+    }//GEN-LAST:event_StartseiteButtonActionPerformed
+
+    private void BerechnenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BerechnenButtonActionPerformed
+        String startkapital = Startkapital.getText();
+
+        if ("".equals(startkapital)) {
+            System.out.println("Kein Wert");
+        } else {
+            StartkapitalDouble = Double.parseDouble(startkapital);
+            System.out.println(StartkapitalDouble);
+        }
+
+        String zinssatz = Zinssatz.getText();
+
+        if ("".equals(zinssatz)) {
+            System.out.println("Kein Wert");
+        } else {
+            ZinssatzDouble = Double.parseDouble(zinssatz);
+            System.out.println(ZinssatzDouble);
+        }
+
+        String sparziel = Sparziel.getText();
+
+        if ("".equals(sparziel)) {
+            System.out.println("Kein Wert");
+        } else {
+            SparzielDouble = Double.parseDouble(sparziel);
+            System.out.println(SparzielDouble);
+        }
+
+        String jährlicherSparbetrag = JährlicherSparbetrag.getText();
+
+        if ("".equals(jährlicherSparbetrag)) {
+            System.out.println("Kein Wert");
+        } else {
+            JährlicherSparbetragDouble = Double.parseDouble(jährlicherSparbetrag);
+            System.out.println(JährlicherSparbetragDouble);
+        }
+
+        String monatlicherSparbetrag = MonatlicherSparbetrag.getText();
+
+        if ("".equals(monatlicherSparbetrag)) {
+            System.out.println("Kein Wert");
+        } else {
+            MonatlicherSparbetragDouble = Double.parseDouble(monatlicherSparbetrag);
+            System.out.println(MonatlicherSparbetragDouble);
+        }
+
+    }//GEN-LAST:event_BerechnenButtonActionPerformed
+
+    private void KeineBuchstabenImJährlicherSparbetrag(int maxLength) {
+        ((AbstractDocument) JährlicherSparbetrag.getDocument()).setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void insertString(DocumentFilter.FilterBypass fb, int offset, String text, AttributeSet attrs) throws BadLocationException {
+                String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
+                try {
+                    double number = Double.parseDouble(newText);
+                    if (number >= 0 && number <= Double.MAX_VALUE && ("" + number).length() <= maxLength) {
+                        super.insertString(fb, offset, text, attrs);
+                    }
+                } catch (NumberFormatException e) {
+                    // ignore non-double input
+                }
+            }
+
+            @Override
+            public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
+                if (newText.equals("-") && maxLength > 0) {
+                    super.replace(fb, offset, length, text, attrs);
+                    return;
+                }
+                try {
+                    double number = Double.parseDouble(newText);
+                    if (number >= 0 && number <= Double.MAX_VALUE && ("" + number).length() <= maxLength) {
+                        super.replace(fb, offset, length, text, attrs);
+                    }
+                } catch (NumberFormatException e) {
+                    // ignore non-double input
+                }
+            }
+        });
+    }
+
+    private void KeineBuchstabenImMonatlicherSparbetrag(int maxLength) {
+        ((AbstractDocument) MonatlicherSparbetrag.getDocument()).setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void insertString(DocumentFilter.FilterBypass fb, int offset, String text, AttributeSet attrs) throws BadLocationException {
+                String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
+                try {
+                    double number = Double.parseDouble(newText);
+                    if (number >= 0 && number <= Double.MAX_VALUE && ("" + number).length() <= maxLength) {
+                        super.insertString(fb, offset, text, attrs);
+                    }
+                } catch (NumberFormatException e) {
+                    // ignore non-double input
+                }
+            }
+
+            @Override
+            public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
+                if (newText.equals("-") && maxLength > 0) {
+                    super.replace(fb, offset, length, text, attrs);
+                    return;
+                }
+                try {
+                    double number = Double.parseDouble(newText);
+                    if (number >= 0 && number <= Double.MAX_VALUE && ("" + number).length() <= maxLength) {
+                        super.replace(fb, offset, length, text, attrs);
+                    }
+                } catch (NumberFormatException e) {
+                    // ignore non-double input
+                }
+            }
+        });
+    }
+
+    private void KeineBuchstabenImSparZiel(int maxLength) {
+        ((AbstractDocument) Sparziel.getDocument()).setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void insertString(DocumentFilter.FilterBypass fb, int offset, String text, AttributeSet attrs) throws BadLocationException {
+                String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
+                try {
+                    double number = Double.parseDouble(newText);
+                    if (number >= 0 && number <= Double.MAX_VALUE && ("" + number).length() <= maxLength) {
+                        super.insertString(fb, offset, text, attrs);
+                    }
+                } catch (NumberFormatException e) {
+                    // ignore non-double input
+                }
+            }
+
+            @Override
+            public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
+                if (newText.equals("-") && maxLength > 0) {
+                    super.replace(fb, offset, length, text, attrs);
+                    return;
+                }
+                try {
+                    double number = Double.parseDouble(newText);
+                    if (number >= 0 && number <= Double.MAX_VALUE && ("" + number).length() <= maxLength) {
+                        super.replace(fb, offset, length, text, attrs);
+                    }
+                } catch (NumberFormatException e) {
+                    // ignore non-double input
+                }
+            }
+        });
+    }
+
+    private void KeineBuchstabenImZinssatz(int maxLength) {
+        ((AbstractDocument) Zinssatz.getDocument()).setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void insertString(DocumentFilter.FilterBypass fb, int offset, String text, AttributeSet attrs) throws BadLocationException {
+                String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
+                try {
+                    double number = Double.parseDouble(newText);
+                    if (number >= 0 && number <= Double.MAX_VALUE && ("" + number).length() <= maxLength) {
+                        super.insertString(fb, offset, text, attrs);
+                    }
+                } catch (NumberFormatException e) {
+                    // ignore non-double input
+                }
+            }
+
+            @Override
+            public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
+                if (newText.equals("-") && maxLength > 0) {
+                    super.replace(fb, offset, length, text, attrs);
+                    return;
+                }
+                try {
+                    double number = Double.parseDouble(newText);
+                    if (number >= 0 && number <= Double.MAX_VALUE && ("" + number).length() <= maxLength) {
+                        super.replace(fb, offset, length, text, attrs);
+                    }
+                } catch (NumberFormatException e) {
+                    // ignore non-double input
+                }
+            }
+        });
+    }
+
+    private void KeineBuchstabenImStartkapital(int maxLength) {
+        ((AbstractDocument) Startkapital.getDocument()).setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void insertString(DocumentFilter.FilterBypass fb, int offset, String text, AttributeSet attrs) throws BadLocationException {
+                String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
+                try {
+                    double number = Double.parseDouble(newText);
+                    if (number >= 0 && number <= Double.MAX_VALUE && ("" + number).length() <= maxLength) {
+                        super.insertString(fb, offset, text, attrs);
+                    }
+                } catch (NumberFormatException e) {
+                    // ignore non-double input
+                }
+            }
+
+            @Override
+            public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                String newText = fb.getDocument().getText(0, fb.getDocument().getLength()) + text;
+                if (newText.equals("-") && maxLength > 0) {
+                    super.replace(fb, offset, length, text, attrs);
+                    return;
+                }
+                try {
+                    double number = Double.parseDouble(newText);
+                    if (number >= 0 && number <= Double.MAX_VALUE && ("" + number).length() <= maxLength) {
+                        super.replace(fb, offset, length, text, attrs);
+                    }
+                } catch (NumberFormatException e) {
+                    // ignore non-double input
+                }
+            }
+        });
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
