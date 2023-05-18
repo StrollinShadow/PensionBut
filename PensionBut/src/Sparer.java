@@ -1,9 +1,6 @@
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.NumberFormat;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -12,9 +9,6 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
-import java.util.Locale;
-import javax.swing.JFrame;
-
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -43,8 +37,8 @@ public class Sparer extends javax.swing.JFrame {
         keineBuchstabenImSparbetragTextField(10);
         keineBuchstabenImSparbetragMonatTextField(10);
         keineBuchstabenImZinsbetrag(10);
-        setLocationRelativeTo(null); 
-        
+        setLocationRelativeTo(null);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -200,7 +194,7 @@ public class Sparer extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(yearlyRB, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                                .addComponent(yearlyRB, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
                                 .addGap(137, 137, 137))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,7 +202,7 @@ public class Sparer extends javax.swing.JFrame {
                                     .addComponent(SparbetragTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(DauerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                                    .addComponent(DauerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(DauerSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -230,7 +224,7 @@ public class Sparer extends javax.swing.JFrame {
                                             .addComponent(DauerLabel2)
                                             .addComponent(EinzahltagSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addComponent(AnfangMonatRB))
-                                .addContainerGap(36, Short.MAX_VALUE))
+                                .addContainerGap(34, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(EndeMonatRB, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -302,7 +296,7 @@ public class Sparer extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(gesamtsumme))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(SpeichernButton, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)))
@@ -488,7 +482,7 @@ public class Sparer extends javax.swing.JFrame {
         this.dispose();
         Startseite Startseite = new Startseite();
         Startseite.setVisible(true);
-        setLocationRelativeTo(null); 
+        setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void keineBuchstabenImZinsbetrag(int maxLength) {
