@@ -1,4 +1,6 @@
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -98,6 +100,12 @@ public class Planer extends javax.swing.JFrame {
         jLabel1.setText("Startkapital:");
 
         jLabel2.setText("Sparziel:");
+
+        Sparziel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SparzielActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Zinssatz:");
 
@@ -215,9 +223,9 @@ public class Planer extends javax.swing.JFrame {
                     .addComponent(AnfangMonatRB)
                     .addComponent(AnfangJahrRB))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EndeMonatRB)
-                    .addComponent(EndeJahrRB))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(EndeJahrRB)
+                    .addComponent(EndeMonatRB))
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -313,8 +321,45 @@ public class Planer extends javax.swing.JFrame {
             MonatlicherSparbetragDouble = Double.parseDouble(monatlicherSparbetrag);
             System.out.println(MonatlicherSparbetragDouble);
         }
+        
+    /*        Double StartkapitalDouble;
+    Double ZinssatzDouble;
+    Double SparzielDouble;
+    Double JährlicherSparbetragDouble;
+    Double MonatlicherSparbetragDouble; */
 
+if (JährlichRB.isSelected()) { int i = 0;
+   while (SparzielDouble>StartkapitalDouble){
+      
+       StartkapitalDouble += JährlicherSparbetragDouble;
+       StartkapitalDouble += (StartkapitalDouble*ZinssatzDouble)/100;
+       i++;
+   
+
+   }
+   System.out.println(i);
+}
+else {
+      
+    int o = 0;
+   while (SparzielDouble>StartkapitalDouble){
+      
+       StartkapitalDouble +=  MonatlicherSparbetragDouble;
+       StartkapitalDouble += (StartkapitalDouble*ZinssatzDouble)/100/12;
+       o++;
+   
+
+   }
+   System.out.println(o);
+}
+   
+
+       
     }//GEN-LAST:event_BerechnenButtonActionPerformed
+
+    private void SparzielActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SparzielActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SparzielActionPerformed
 
     private void KeineBuchstabenImJährlicherSparbetrag(int maxLength) {
         ((AbstractDocument) JährlicherSparbetrag.getDocument()).setDocumentFilter(new DocumentFilter() {
