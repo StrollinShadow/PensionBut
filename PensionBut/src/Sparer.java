@@ -460,7 +460,7 @@ public class Sparer extends javax.swing.JFrame {
 
         if (yearlyRB.isSelected()) {
             for (int i = 0; i < AnzJahre; i++) {
-                Startkapital += Startkapital + SparbetragJahr;
+                Startkapital += SparbetragJahr;
                 Startkapital += (Startkapital * Zinsbetrag) / 100;
             }
             BigDecimal bd = new BigDecimal(Startkapital).setScale(2, RoundingMode.HALF_UP);
@@ -468,7 +468,7 @@ public class Sparer extends javax.swing.JFrame {
             gesamtsumme.setText(String.valueOf(Ergebnis));
         } else if (monthlyRB.isSelected()) {
             for (int i = 0; i < AnzMonate; i++) {
-                Startkapital += Startkapital + SparbetragMonat;
+                Startkapital += SparbetragMonat;
                 Startkapital += (Startkapital * Zinsbetrag) / 100;
             }
             BigDecimal bd = new BigDecimal(Startkapital).setScale(2, RoundingMode.HALF_UP);
