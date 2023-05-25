@@ -476,23 +476,20 @@ public class Sparer extends javax.swing.JFrame {
             gesamtsumme.setText(String.valueOf(Ergebnis));
 
         }
+        if(yearlyRB.isSelected()){
+            if("".equals(sparbetrag) || "".equals(startkapital) || "".equals(zinsbetrag) ){
+            Fehlermeldung Fehlermeldung = new Fehlermeldung();
+            Fehlermeldung.setVisible(true);
+            }
+        }
+        if(monthlyRB.isSelected()){
+            if("".equals(sparbetragMonat) || "".equals(startkapital) || "".equals(zinsbetrag) ){
+            Fehlermeldung Fehlermeldung = new Fehlermeldung();
+            Fehlermeldung.setVisible(true);
+            }
+        }
         
-        if("".equals(sparbetrag)){
-            Fehlermeldung Fehlermeldung = new Fehlermeldung();
-        Fehlermeldung.setVisible(true);
-        }
-        else if("".equals(sparbetragMonat)){
-            Fehlermeldung Fehlermeldung = new Fehlermeldung();
-        Fehlermeldung.setVisible(true);
-        }
-        else if("".equals(startkapital)){
-            Fehlermeldung Fehlermeldung = new Fehlermeldung();
-        Fehlermeldung.setVisible(true);
-        }
-        else if("".equals(zinsbetrag)){
-            Fehlermeldung Fehlermeldung = new Fehlermeldung();
-        Fehlermeldung.setVisible(true);
-        }
+
         
     }//GEN-LAST:event_SpeichernButtonActionPerformed
 
