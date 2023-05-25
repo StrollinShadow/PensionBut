@@ -12,7 +12,8 @@ import javax.swing.JFrame;
 public class Startseite extends javax.swing.JFrame {
 
     public Startseite() {
-        initComponents(); 
+        initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -31,6 +32,8 @@ public class Startseite extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(920, 600));
+        setSize(new java.awt.Dimension(620, 459));
 
         head.setBackground(new java.awt.Color(51, 188, 209));
 
@@ -64,7 +67,12 @@ public class Startseite extends javax.swing.JFrame {
         });
 
         jButton3.setFont(new java.awt.Font("Lucida Console", 0, 36)); // NOI18N
-        jButton3.setText("jButton3");
+        jButton3.setText("Planer");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Lucida Console", 0, 36)); // NOI18N
         jButton4.setText("jButton4");
@@ -103,6 +111,12 @@ public class Startseite extends javax.swing.JFrame {
         JFrame Sparer = new Sparer();
         Sparer.setVisible(true);
     }//GEN-LAST:event_jButtonZumSparerActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        this.dispose();
+        JFrame Planer = new Planer();
+        Planer.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
