@@ -461,7 +461,8 @@ public class Sparer extends javax.swing.JFrame {
             einzahldatumergebnis.setText(formattedDate);
         }
 
-        if (yearlyRB.isSelected()) {
+        if (yearlyRB.isSelected() && EndeJahrRB.isSelected()) {
+            AnzJahre -= 1;
             for (int i = 0; i < AnzJahre; i++) {
                 Startkapital += Startkapital + SparbetragJahr;
                 Startkapital += (Startkapital * Zinsbetrag) / 100;
@@ -478,6 +479,15 @@ public class Sparer extends javax.swing.JFrame {
             double Ergebnis = bd.doubleValue();
             gesamtsumme.setText(String.valueOf(Ergebnis));
 
+        }else if (yearlyRB.isSelected() && AnfangJahrRB.isSelected()){
+                AnzJahre += 1;
+                for (int i = 0; i < AnzJahre; i++) {
+                Startkapital += Startkapital + SparbetragJahr;
+                Startkapital += (Startkapital * Zinsbetrag) / 100;
+            }
+            BigDecimal bd = new BigDecimal(Startkapital).setScale(2, RoundingMode.HALF_UP);
+            double Ergebnis = bd.doubleValue();
+            gesamtsumme.setText(String.valueOf(Ergebnis));
         }
     }//GEN-LAST:event_SpeichernButtonActionPerformed
 
