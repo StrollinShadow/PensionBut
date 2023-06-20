@@ -69,7 +69,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="yearlyRB" pref="77" max="32767" attributes="0"/>
+                                  <Component id="yearlyRB" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -79,7 +79,7 @@
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="DauerLabel" pref="86" max="32767" attributes="0"/>
+                                      <Component id="DauerLabel" max="32767" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="DauerSpinner" min="-2" pref="50" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -110,7 +110,7 @@
                                       </Group>
                                       <Component id="AnfangMonatRB" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="34" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="EndeMonatRB" min="-2" pref="169" max="-2" attributes="0"/>
@@ -143,10 +143,15 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="gesamtsumme" min="-2" max="-2" attributes="0"/>
-                              <Component id="einzahldatumergebnis" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="gesamtsumme" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="einzahldatumergebnis" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="464" pref="563" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>

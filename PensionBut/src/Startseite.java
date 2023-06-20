@@ -82,6 +82,13 @@ public class Startseite extends javax.swing.JFrame {
         Kapitalrechner.setText("Piler");
         Kapitalrechner.setMaximumSize(new java.awt.Dimension(145, 47));
         Kapitalrechner.setMinimumSize(new java.awt.Dimension(145, 47));
+        jButton4.setFont(new java.awt.Font("Lucida Console", 0, 36)); // NOI18N
+        jButton4.setText("Piler");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,6 +130,12 @@ public class Startseite extends javax.swing.JFrame {
         JFrame Planer = new Planer();
         Planer.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        this.dispose();
+        JFrame Kapitalrechner = new Kapitalrechner();
+        Kapitalrechner.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
