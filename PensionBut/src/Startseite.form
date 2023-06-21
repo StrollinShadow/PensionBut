@@ -36,7 +36,7 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jButton3" pref="250" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="Kapitalrechner" pref="250" max="32767" attributes="0"/>
+              <Component id="jbutton4" pref="250" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -49,7 +49,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jButtonZumSparer" pref="345" max="32767" attributes="0"/>
                   <Component id="jButton3" max="32767" attributes="0"/>
-                  <Component id="Kapitalrechner" max="32767" attributes="0"/>
+                  <Component id="jbutton4" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -132,7 +132,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="Kapitalrechner">
+    <Component class="javax.swing.JButton" name="jbutton4">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Lucida Console" size="36" style="0"/>

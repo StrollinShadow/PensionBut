@@ -461,7 +461,7 @@ public class Sparer extends javax.swing.JFrame {
             einzahldatumergebnis.setText(formattedDate);
         }
 
-        if (yearlyRB.isSelected()) {
+        if (AnfangJahrRB.isSelected()) {
             for (int i = 0; i < AnzJahre; i++) {
                 Startkapital += SparbetragJahr;
                 Startkapital += (Startkapital * Zinsbetrag) / 100;
@@ -469,16 +469,56 @@ public class Sparer extends javax.swing.JFrame {
             BigDecimal bd = new BigDecimal(Startkapital).setScale(2, RoundingMode.HALF_UP);
             double Ergebnis = bd.doubleValue();
             gesamtsumme.setText(String.valueOf(Ergebnis));
-        } else if (monthlyRB.isSelected()) {
+        } else if (EndeJahrRB.isSelected()) {
+            for (int i = 0; i < AnzJahre; i++) {
+                Startkapital += SparbetragJahr;
+                
+                                 if (i == AnzJahre-1){
+
+                }
+                else{
+                                    Startkapital += (Startkapital * Zinsbetrag) / 100;
+
+                }         
+
+                
+            }            
+            BigDecimal bd = new BigDecimal(Startkapital).setScale(2, RoundingMode.HALF_UP);
+            double Ergebnis = bd.doubleValue();
+            gesamtsumme.setText(String.valueOf(Ergebnis));
+
+        }
+        else if (AnfangMonatRB.isSelected()) {
             for (int i = 0; i < AnzMonate; i++) {
                 Startkapital += SparbetragMonat;
-                Startkapital += (Startkapital * Zinsbetrag) / 100;
+                
+                                    Startkapital += (Startkapital * Zinsbetrag) / 100;
+
+                
             }
             BigDecimal bd = new BigDecimal(Startkapital).setScale(2, RoundingMode.HALF_UP);
             double Ergebnis = bd.doubleValue();
             gesamtsumme.setText(String.valueOf(Ergebnis));
 
         }
+        else if (EndeMonatRB.isSelected()) {
+            for (int i = 0; i < AnzMonate; i++) {
+                Startkapital += SparbetragMonat;
+                if (i == AnzMonate-1){
+                                System.out.println("gugus hat funktioniert Ende Monat");
+
+                }
+                else{
+                                    Startkapital += (Startkapital * Zinsbetrag) / 100;
+
+                }         
+            }
+            BigDecimal bd = new BigDecimal(Startkapital).setScale(2, RoundingMode.HALF_UP);
+            double Ergebnis = bd.doubleValue();
+            gesamtsumme.setText(String.valueOf(Ergebnis));
+
+        }
+        
         if(yearlyRB.isSelected()){
             if("".equals(sparbetrag) || "".equals(startkapital) || "".equals(zinsbetrag) ){
             Fehlermeldung Fehlermeldung = new Fehlermeldung();
