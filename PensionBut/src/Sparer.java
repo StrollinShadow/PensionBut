@@ -492,7 +492,7 @@ public class Sparer extends javax.swing.JFrame {
             for (int i = 0; i < AnzMonate; i++) {
                 Startkapital += SparbetragMonat;
                 
-                                    Startkapital += (Startkapital * Zinsbetrag) / 100;
+                                    Startkapital += (Startkapital * Zinsbetrag) / 100/12;
 
                 
             }
@@ -509,7 +509,7 @@ public class Sparer extends javax.swing.JFrame {
 
                 }
                 else{
-                                    Startkapital += (Startkapital * Zinsbetrag) / 100;
+                                    Startkapital += (Startkapital * Zinsbetrag)/100 / 12;
 
                 }         
             }
