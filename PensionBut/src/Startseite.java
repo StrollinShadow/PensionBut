@@ -74,6 +74,13 @@ public class Startseite extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
+=======
+        Kapitalrechner.setFont(new java.awt.Font("Lucida Console", 0, 36)); // NOI18N
+        Kapitalrechner.setText("Piler");
+        Kapitalrechner.setMaximumSize(new java.awt.Dimension(145, 47));
+        Kapitalrechner.setMinimumSize(new java.awt.Dimension(145, 47));
+>>>>>>> c84378042d77448b19c911bc78cd7f4c6129efb1
         jButton4.setFont(new java.awt.Font("Lucida Console", 0, 36)); // NOI18N
         jButton4.setText("Piler");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
