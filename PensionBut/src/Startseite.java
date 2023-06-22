@@ -29,7 +29,7 @@ public class Startseite extends javax.swing.JFrame {
         titel = new javax.swing.JLabel();
         jButtonZumSparer = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        Kapitalrechner = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(920, 600));
@@ -60,8 +60,6 @@ public class Startseite extends javax.swing.JFrame {
 
         jButtonZumSparer.setFont(new java.awt.Font("Lucida Console", 0, 36)); // NOI18N
         jButtonZumSparer.setText("Sparer");
-        jButtonZumSparer.setMaximumSize(new java.awt.Dimension(145, 47));
-        jButtonZumSparer.setMinimumSize(new java.awt.Dimension(145, 47));
         jButtonZumSparer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonZumSparerActionPerformed(evt);
@@ -70,18 +68,19 @@ public class Startseite extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Lucida Console", 0, 36)); // NOI18N
         jButton3.setText("Planer");
-        jButton3.setMaximumSize(new java.awt.Dimension(189, 47));
-        jButton3.setMinimumSize(new java.awt.Dimension(189, 47));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        Kapitalrechner.setFont(new java.awt.Font("Lucida Console", 0, 36)); // NOI18N
-        Kapitalrechner.setText("Piler");
-        Kapitalrechner.setMaximumSize(new java.awt.Dimension(145, 47));
-        Kapitalrechner.setMinimumSize(new java.awt.Dimension(145, 47));
+        jButton4.setFont(new java.awt.Font("Lucida Console", 0, 36)); // NOI18N
+        jButton4.setText("Piler");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,7 +93,7 @@ public class Startseite extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Kapitalrechner, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -105,7 +104,7 @@ public class Startseite extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonZumSparer, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Kapitalrechner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -123,6 +122,12 @@ public class Startseite extends javax.swing.JFrame {
         JFrame Planer = new Planer();
         Planer.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        this.dispose();
+        JFrame Kapitalrechner = new Kapitalrechner();
+        Kapitalrechner.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,9 +165,9 @@ public class Startseite extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Kapitalrechner;
     private javax.swing.JPanel head;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButtonZumSparer;
     private javax.swing.JLabel titel;
     // End of variables declaration//GEN-END:variables

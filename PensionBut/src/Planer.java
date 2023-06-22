@@ -1,6 +1,4 @@
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -70,9 +68,8 @@ public class Planer extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         BerechnenButton = new javax.swing.JButton();
         StartseiteButton = new javax.swing.JButton();
-        totalPlaner = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        totalPlaner = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(850, 550));
@@ -103,12 +100,6 @@ public class Planer extends javax.swing.JFrame {
         jLabel1.setText("Startkapital:");
 
         jLabel2.setText("Sparziel:");
-
-        Sparziel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SparzielActionPerformed(evt);
-            }
-        });
 
         jLabel3.setText("Zinssatz:");
 
@@ -158,11 +149,9 @@ public class Planer extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setText("Total: ");
+
         totalPlaner.setText("0");
-
-        jLabel7.setText("Total:");
-
-        jLabel6.setText("Monate/Jahre");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -173,54 +162,47 @@ public class Planer extends javax.swing.JFrame {
                 .addComponent(BerechnenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(StartseiteButton))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(Sparziel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(94, 94, 94))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(Startkapital))
-                        .addGap(135, 135, 135)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Zinssatz)
-                            .addComponent(jLabel3))
-                        .addGap(139, 139, 139)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(Sparziel))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                         .addGap(437, 437, 437))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AnfangMonatRB)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(EndeMonatRB)
-                                            .addComponent(MonatlichRB))
-                                        .addGap(108, 108, 108))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(MonatlicherSparbetrag)
-                                        .addGap(110, 110, 110)))
+                                    .addComponent(jLabel1)
+                                    .addComponent(Startkapital, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(135, 135, 135)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Zinssatz, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3)))
+                            .addComponent(AnfangMonatRB)
+                            .addComponent(MonatlicherSparbetrag, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(EndeMonatRB)
+                                    .addComponent(MonatlichRB))
+                                .addGap(108, 108, 108)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(AnfangJahrRB)
                                     .addComponent(JährlichRB)
                                     .addComponent(EndeJahrRB)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(JährlicherSparbetrag)
-                                        .addGap(2, 2, 2))
+                                    .addComponent(JährlicherSparbetrag, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4))))
-                        .addGap(242, 242, 242))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(51, 51, 51)
-                        .addComponent(totalPlaner, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(jLabel6)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(totalPlaner)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,11 +238,10 @@ public class Planer extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(MonatlicherSparbetrag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JährlicherSparbetrag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(totalPlaner)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(totalPlaner))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BerechnenButton)
@@ -349,44 +330,33 @@ public class Planer extends javax.swing.JFrame {
             System.out.println(MonatlicherSparbetragDouble);
         }
         
-    /*        Double StartkapitalDouble;
-    Double ZinssatzDouble;
-    Double SparzielDouble;
-    Double JährlicherSparbetragDouble;
-    Double MonatlicherSparbetragDouble; */
-
-if (JährlichRB.isSelected()) { int i = 0;
-   while (SparzielDouble>StartkapitalDouble){
+   if (JährlichRB.isSelected()) { 
+       int jahr = 0;
+       while (SparzielDouble>StartkapitalDouble){
       
        StartkapitalDouble += JährlicherSparbetragDouble;
        StartkapitalDouble += (StartkapitalDouble*ZinssatzDouble)/100;
-       i++;
+       jahr++;
    
 
    }
-   totalPlaner.setText(String.valueOf(i));
+   totalPlaner.setText(String.valueOf(jahr) + " Jahr(e)");
 }
 else {
       
-    int o = 0;
+    int monat = 0;
    while (SparzielDouble>StartkapitalDouble){
       
        StartkapitalDouble +=  MonatlicherSparbetragDouble;
        StartkapitalDouble += (StartkapitalDouble*ZinssatzDouble)/100/12;
-       o++;
+       monat++;
    
 
    }
-   totalPlaner.setText(String.valueOf(o));
+   totalPlaner.setText(String.valueOf(monat) + " Monat(e)");
 }
-   
 
-       
     }//GEN-LAST:event_BerechnenButtonActionPerformed
-
-    private void SparzielActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SparzielActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SparzielActionPerformed
 
     private void KeineBuchstabenImJährlicherSparbetrag(int maxLength) {
         ((AbstractDocument) JährlicherSparbetrag.getDocument()).setDocumentFilter(new DocumentFilter() {
@@ -614,7 +584,6 @@ else {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel titel;
     private javax.swing.JLabel totalPlaner;
     // End of variables declaration//GEN-END:variables

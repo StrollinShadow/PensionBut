@@ -1,4 +1,4 @@
-
+    
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import javax.swing.text.AbstractDocument;
@@ -194,7 +194,7 @@ public class Sparer extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(yearlyRB, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                                .addComponent(yearlyRB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(137, 137, 137))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,7 +202,7 @@ public class Sparer extends javax.swing.JFrame {
                                     .addComponent(SparbetragTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(DauerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                                    .addComponent(DauerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(DauerSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -224,7 +224,7 @@ public class Sparer extends javax.swing.JFrame {
                                             .addComponent(DauerLabel2)
                                             .addComponent(EinzahltagSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addComponent(AnfangMonatRB))
-                                .addContainerGap(34, Short.MAX_VALUE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(EndeMonatRB, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -247,9 +247,12 @@ public class Sparer extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(gesamtsumme)
-                            .addComponent(einzahldatumergebnis))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(gesamtsumme)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(einzahldatumergebnis)
+                                .addGap(464, 563, Short.MAX_VALUE))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,7 +351,7 @@ public class Sparer extends javax.swing.JFrame {
 
     private void SpeichernButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SpeichernButtonActionPerformed
 
-        String startkapital = StartkapitalTextField.getText();
+String startkapital = StartkapitalTextField.getText();
 
         if ("".equals(startkapital)) {
             System.out.println("Kein Wert");
@@ -458,7 +461,7 @@ public class Sparer extends javax.swing.JFrame {
             einzahldatumergebnis.setText(formattedDate);
         }
 
-        if (yearlyRB.isSelected()) {
+        if (AnfangJahrRB.isSelected()) {
             for (int i = 0; i < AnzJahre; i++) {
                 Startkapital += SparbetragJahr;
                 Startkapital += (Startkapital * Zinsbetrag) / 100;
@@ -466,31 +469,48 @@ public class Sparer extends javax.swing.JFrame {
             BigDecimal bd = new BigDecimal(Startkapital).setScale(2, RoundingMode.HALF_UP);
             double Ergebnis = bd.doubleValue();
             gesamtsumme.setText(String.valueOf(Ergebnis));
-        } else if (monthlyRB.isSelected()) {
+        } else if (EndeJahrRB.isSelected()) {
+            for (int i = 0; i < AnzJahre; i++) {
+                Startkapital += SparbetragJahr;
+                 if (i == AnzJahre-1){
+                }
+                else{
+                 Startkapital += (Startkapital * Zinsbetrag) / 100;
+
+                }          
+            }            
+            BigDecimal bd = new BigDecimal(Startkapital).setScale(2, RoundingMode.HALF_UP);
+            double Ergebnis = bd.doubleValue();
+            gesamtsumme.setText(String.valueOf(Ergebnis));
+        }
+        else if (AnfangMonatRB.isSelected()) {
             for (int i = 0; i < AnzMonate; i++) {
                 Startkapital += SparbetragMonat;
-                Startkapital += (Startkapital * Zinsbetrag) / 100;
+                Startkapital += (Startkapital * Zinsbetrag) / 100/12;
+
+                
             }
             BigDecimal bd = new BigDecimal(Startkapital).setScale(2, RoundingMode.HALF_UP);
             double Ergebnis = bd.doubleValue();
             gesamtsumme.setText(String.valueOf(Ergebnis));
 
         }
-        if(yearlyRB.isSelected()){
-            if("".equals(sparbetrag) || "".equals(startkapital) || "".equals(zinsbetrag) ){
-            Fehlermeldung Fehlermeldung = new Fehlermeldung();
-            Fehlermeldung.setVisible(true);
+        else if (EndeMonatRB.isSelected()) {
+            for (int i = 0; i < AnzMonate; i++) {
+                Startkapital += SparbetragMonat;
+                if (i == AnzMonate-1){
+                    System.out.println("gugus hat funktioniert Ende Monat");
+                }
+                else{
+                Startkapital += (Startkapital * Zinsbetrag)/100 / 12;
+                }         
             }
-        }
-        if(monthlyRB.isSelected()){
-            if("".equals(sparbetragMonat) || "".equals(startkapital) || "".equals(zinsbetrag) ){
-            Fehlermeldung Fehlermeldung = new Fehlermeldung();
-            Fehlermeldung.setVisible(true);
-            }
-        }
-        
+            BigDecimal bd = new BigDecimal(Startkapital).setScale(2, RoundingMode.HALF_UP);
+            double Ergebnis = bd.doubleValue();
+            gesamtsumme.setText(String.valueOf(Ergebnis));
 
-        
+        }
+ 
     }//GEN-LAST:event_SpeichernButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
